@@ -1,0 +1,2159 @@
+
+
+HI-TECH Software PIC LITE Macro Assembler V9.80 build 6738 
+                                                                                               Wed Jun 20 23:23:32 2012
+
+HI-TECH Software Omniscient Code Generator (Lite mode) build 6738
+     1  0000                     opt subtitle "HI-TECH Software Omniscient Code Generator (Lite mode) build 6738"
+     2                           
+     3                           opt pagewidth 120
+     4                           
+     5                           	opt lm
+     6                           
+     7                           	processor	16F876A
+     8                           clrc	macro
+     9                           	bcf	3,0
+    10  0000                     	endm
+    11                           clrz	macro
+    12                           	bcf	3,2
+    13  0000                     	endm
+    14                           setc	macro
+    15                           	bsf	3,0
+    16  0000                     	endm
+    17                           setz	macro
+    18                           	bsf	3,2
+    19  0000                     	endm
+    20                           skipc	macro
+    21                           	btfss	3,0
+    22  0000                     	endm
+    23                           skipz	macro
+    24                           	btfss	3,2
+    25  0000                     	endm
+    26                           skipnc	macro
+    27                           	btfsc	3,0
+    28  0000                     	endm
+    29                           skipnz	macro
+    30                           	btfsc	3,2
+    31  0000                     	endm
+    32  0000                     indf	equ	0
+    33  0000                     indf0	equ	0
+    34  0002                     pc	equ	2
+    35  0002                     pcl	equ	2
+    36  0003                     status	equ	3
+    37  0004                     fsr	equ	4
+    38  0004                     fsr0	equ	4
+    39  0001                     c	equ	1
+    40  0000                     z	equ	0
+    41  000A                     pclath	equ	10
+    42                           # 13 "C:\Users\Phang\Desktop\9.80\PR 27\Internal Slave\Slave_Internal UART.c"
+    43                           	psect config,class=CONFIG,delta=2 ;#
+    44                           # 13 "C:\Users\Phang\Desktop\9.80\PR 27\Internal Slave\Slave_Internal UART.c"
+    45  2007  3F32               	dw 0x3F32 ;#
+    46                           	FNCALL	_main,_send_config
+    47                           	FNCALL	_main,_lcd_clr
+    48                           	FNCALL	_main,_lcd_goto
+    49                           	FNCALL	_main,_send_string
+    50                           	FNCALL	_main,_internal_uart_read
+    51                           	FNCALL	_main,_internal_uart_write
+    52                           	FNCALL	_main,_send_char
+    53                           	FNCALL	_send_string,_send_char
+    54                           	FNCALL	_lcd_goto,_send_config
+    55                           	FNCALL	_lcd_clr,_send_config
+    56                           	FNCALL	_lcd_clr,_delay
+    57                           	FNCALL	_send_char,_delay
+    58                           	FNCALL	_send_config,_delay
+    59                           	FNROOT	_main
+    60                           	global	_k
+    61                           	global	_m
+    62                           	global	_dummy_byte
+    63                           	global	_PORTB
+    64                           psect	text216,local,class=CODE,delta=2
+    65                           global __ptext216
+    66  0000                     __ptext216:
+    67  0006                     _PORTB	set	6
+    68                           	global	_RCREG
+    69  001A                     _RCREG	set	26
+    70                           	global	_TXREG
+    71  0019                     _TXREG	set	25
+    72                           	global	_CREN
+    73  00C4                     _CREN	set	196
+    74                           	global	_RA0
+    75  0028                     _RA0	set	40
+    76                           	global	_RA1
+    77  0029                     _RA1	set	41
+    78                           	global	_RA2
+    79  002A                     _RA2	set	42
+    80                           	global	_RA3
+    81  002B                     _RA3	set	43
+    82                           	global	_RA4
+    83  002C                     _RA4	set	44
+    84                           	global	_RA5
+    85  002D                     _RA5	set	45
+    86                           	global	_RC0
+    87  0038                     _RC0	set	56
+    88                           	global	_RC1
+    89  0039                     _RC1	set	57
+    90                           	global	_RC2
+    91  003A                     _RC2	set	58
+    92                           	global	_RC3
+    93  003B                     _RC3	set	59
+    94                           	global	_RC4
+    95  003C                     _RC4	set	60
+    96                           	global	_RC5
+    97  003D                     _RC5	set	61
+    98                           	global	_RCIF
+    99  0065                     _RCIF	set	101
+   100                           	global	_RX9
+   101  00C6                     _RX9	set	198
+   102                           	global	_SPEN
+   103  00C7                     _SPEN	set	199
+   104                           	global	_TXIF
+   105  0064                     _TXIF	set	100
+   106                           	global	_ADCON1
+   107  009F                     _ADCON1	set	159
+   108                           	global	_SPBRG
+   109  0099                     _SPBRG	set	153
+   110                           	global	_TRISA
+   111  0085                     _TRISA	set	133
+   112                           	global	_TRISB
+   113  0086                     _TRISB	set	134
+   114                           	global	_TRISC
+   115  0087                     _TRISC	set	135
+   116                           	global	_BRGH
+   117  04C2                     _BRGH	set	1218
+   118                           	global	_TRISC0
+   119  0438                     _TRISC0	set	1080
+   120                           	global	_TRISC1
+   121  0439                     _TRISC1	set	1081
+   122                           	global	_TRISC2
+   123  043A                     _TRISC2	set	1082
+   124                           	global	_TRISC3
+   125  043B                     _TRISC3	set	1083
+   126                           	global	_TRISC6
+   127  043E                     _TRISC6	set	1086
+   128                           	global	_TRISC7
+   129  043F                     _TRISC7	set	1087
+   130                           	global	_TX9
+   131  04C6                     _TX9	set	1222
+   132                           	global	_TXEN
+   133  04C5                     _TXEN	set	1221
+   134                           psect	strings,class=STRING,delta=2
+   135                           global __pstrings
+   136  0003                     __pstrings:
+   137                           ;	global	stringdir,stringtab,__stringbase
+   138  0003                     stringtab:
+   139                           ;	String table - string pointers are 1 byte each
+   140  0003                     stringcode:stringdir:
+      + 0003                     stringdir:	
+   141  0003  3000               movlw high(stringdir)
+   142  0004  008A               movwf pclath
+   143  0005  0804               movf fsr,w
+   144  0006  0A84               incf fsr
+   145  0007  0782               	addwf pc
+   146  0008                     __stringbase:
+   147  0008  3400               	retlw	0
+   148                           psect	strings
+   149                           	
+   150  0009                     STR_2:	
+   151  0009  3453               	retlw	83	;'S'
+   152  000A  344C               	retlw	76	;'L'
+   153  000B  3441               	retlw	65	;'A'
+   154  000C  3456               	retlw	86	;'V'
+   155  000D  3445               	retlw	69	;'E'
+   156  000E  3420               	retlw	32	;' '
+   157  000F  3449               	retlw	73	;'I'
+   158  0010  346E               	retlw	110	;'n'
+   159  0011  3474               	retlw	116	;'t'
+   160  0012  3465               	retlw	101	;'e'
+   161  0013  3472               	retlw	114	;'r'
+   162  0014  346E               	retlw	110	;'n'
+   163  0015  3461               	retlw	97	;'a'
+   164  0016  346C               	retlw	108	;'l'
+   165  0017  3400               	retlw	0
+   166                           psect	strings
+   167                           	
+   168  0018                     STR_1:	
+   169  0018  3443               	retlw	67	;'C'
+   170  0019  3479               	retlw	121	;'y'
+   171  001A  3474               	retlw	116	;'t'
+   172  001B  3472               	retlw	114	;'r'
+   173  001C  346F               	retlw	111	;'o'
+   174  001D  346E               	retlw	110	;'n'
+   175  001E  3420               	retlw	32	;' '
+   176  001F  3450               	retlw	80	;'P'
+   177  0020  3452               	retlw	82	;'R'
+   178  0021  3432               	retlw	50	;'2'
+   179  0022  3437               	retlw	55	;'7'
+   180  0023  3400               	retlw	0
+   181                           psect	strings
+   182                           	file	"Internal Slave.as"
+   183                           	line	#
+   184                           psect cinit,class=CODE,delta=2
+   185                           global start_initialization
+   186  0560                     start_initialization:
+   187                           
+   188                           psect	bssBANK0,class=BANK0,space=1
+   189                           global __pbssBANK0
+   190  0020                     __pbssBANK0:
+   191  0020                     _k:
+   192  0020                            ds      2
+   193                           
+   194  0022                     _m:
+   195  0022                            ds      2
+   196                           
+   197  0024                     _dummy_byte:
+   198  0024                            ds      1
+   199                           
+   200                           ; Clear objects allocated to BANK0
+   201                           psect cinit,class=CODE,delta=2
+   202  0560  01A0               	clrf	((__pbssBANK0)+0)&07Fh
+   203  0561  01A1               	clrf	((__pbssBANK0)+1)&07Fh
+   204  0562  01A2               	clrf	((__pbssBANK0)+2)&07Fh
+   205  0563  01A3               	clrf	((__pbssBANK0)+3)&07Fh
+   206  0564  01A4               	clrf	((__pbssBANK0)+4)&07Fh
+   207                           psect cinit,class=CODE,delta=2
+   208                           global end_of_initialization
+   209                           
+   210                           ;End of C runtime variable initialization code
+   211                           
+   212  0565                     end_of_initialization:
+   213  0565  0183               clrf status
+   214  0566  120A  118A  2E55   ljmp _main	;jump to C main() function
+   215                           psect	cstackCOMMON,class=COMMON,space=1
+   216                           global __pcstackCOMMON
+   217  0070                     __pcstackCOMMON:
+   218                           	global	?_send_config
+   219  0070                     ?_send_config:	; 0 bytes @ 0x0
+   220                           	global	?_lcd_clr
+   221  0070                     ?_lcd_clr:	; 0 bytes @ 0x0
+   222                           	global	?_lcd_goto
+   223  0070                     ?_lcd_goto:	; 0 bytes @ 0x0
+   224                           	global	?_send_string
+   225  0070                     ?_send_string:	; 0 bytes @ 0x0
+   226                           	global	??_internal_uart_read
+   227  0070                     ??_internal_uart_read:	; 0 bytes @ 0x0
+   228                           	global	?_internal_uart_write
+   229  0070                     ?_internal_uart_write:	; 0 bytes @ 0x0
+   230                           	global	??_internal_uart_write
+   231  0070                     ??_internal_uart_write:	; 0 bytes @ 0x0
+   232                           	global	?_send_char
+   233  0070                     ?_send_char:	; 0 bytes @ 0x0
+   234                           	global	?_main
+   235  0070                     ?_main:	; 0 bytes @ 0x0
+   236                           	global	?_delay
+   237  0070                     ?_delay:	; 0 bytes @ 0x0
+   238                           	global	?_internal_uart_read
+   239  0070                     ?_internal_uart_read:	; 1 bytes @ 0x0
+   240                           	global	internal_uart_write@data
+   241  0070                     internal_uart_write@data:	; 1 bytes @ 0x0
+   242                           	global	delay@data
+   243  0070                     delay@data:	; 4 bytes @ 0x0
+   244  0070                     	ds	1
+   245                           	global	internal_uart_read@rec_data
+   246  0071                     internal_uart_read@rec_data:	; 1 bytes @ 0x1
+   247  0071                     	ds	3
+   248                           	global	??_delay
+   249  0074                     ??_delay:	; 0 bytes @ 0x4
+   250  0074                     	ds	4
+   251                           	global	??_send_config
+   252  0078                     ??_send_config:	; 0 bytes @ 0x8
+   253                           	global	??_send_char
+   254  0078                     ??_send_char:	; 0 bytes @ 0x8
+   255                           	global	send_config@data
+   256  0078                     send_config@data:	; 1 bytes @ 0x8
+   257                           	global	send_char@data
+   258  0078                     send_char@data:	; 1 bytes @ 0x8
+   259  0078                     	ds	1
+   260                           	global	??_lcd_clr
+   261  0079                     ??_lcd_clr:	; 0 bytes @ 0x9
+   262                           	global	??_lcd_goto
+   263  0079                     ??_lcd_goto:	; 0 bytes @ 0x9
+   264                           	global	??_send_string
+   265  0079                     ??_send_string:	; 0 bytes @ 0x9
+   266  0079                     	ds	1
+   267                           	global	send_string@s
+   268  007A                     send_string@s:	; 1 bytes @ 0xA
+   269                           	global	lcd_goto@data
+   270  007A                     lcd_goto@data:	; 1 bytes @ 0xA
+   271  007A                     	ds	1
+   272                           	global	??_main
+   273  007B                     ??_main:	; 0 bytes @ 0xB
+   274  007B                     	ds	1
+   275                           	global	main@temp
+   276  007C                     main@temp:	; 1 bytes @ 0xC
+   277  007C                     	ds	1
+   278                           	global	main@data_to_read
+   279  007D                     main@data_to_read:	; 1 bytes @ 0xD
+   280  007D                     	ds	1
+   281 ;;Data sizes: Strings 27, constant 0, data 0, bss 5, persistent 0 stack 0
+   282 ;;Auto spaces:   Size  Autos    Used
+   283 ;; COMMON          14     14      14
+   284 ;; BANK0           80      0       5
+   285 ;; BANK1           80      0       0
+   286 ;; BANK3           96      0       0
+   287 ;; BANK2           96      0       0
+   288                           
+   289 ;;
+   290 ;; Pointer list with targets:
+   291                           
+   292 ;; send_string@s	PTR const unsigned char  size(1) Largest target is 15
+   293 ;;		 -> STR_2(CODE[15]), STR_1(CODE[12]), 
+   294 ;;
+   295                           
+   296                           
+   297 ;;
+   298 ;; Critical Paths under _main in COMMON
+   299 ;;
+   300 ;;   _main->_lcd_goto
+   301 ;;   _main->_send_string
+   302 ;;   _send_string->_send_char
+   303 ;;   _lcd_goto->_send_config
+   304 ;;   _lcd_clr->_send_config
+   305 ;;   _send_char->_delay
+   306 ;;   _send_config->_delay
+   307 ;;
+   308 ;; Critical Paths under _main in BANK0
+   309 ;;
+   310 ;;   None.
+   311 ;;
+   312 ;; Critical Paths under _main in BANK1
+   313 ;;
+   314 ;;   None.
+   315 ;;
+   316 ;; Critical Paths under _main in BANK3
+   317 ;;
+   318 ;;   None.
+   319 ;;
+   320 ;; Critical Paths under _main in BANK2
+   321 ;;
+   322 ;;   None.
+   323                           
+   324 ;;
+   325 ;;Main: autosize = 0, tempsize = 1, incstack = 0, save=0
+   326 ;;
+   327                           
+   328 ;;
+   329 ;;Call Graph Tables:
+   330 ;;
+   331 ;; ---------------------------------------------------------------------------------
+   332 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   333 ;; ---------------------------------------------------------------------------------
+   334 ;; (0) _main                                                 3     3      0     747
+   335 ;;                                             11 COMMON     3     3      0
+   336 ;;                        _send_config
+   337 ;;                            _lcd_clr
+   338 ;;                           _lcd_goto
+   339 ;;                        _send_string
+   340 ;;                 _internal_uart_read
+   341 ;;                _internal_uart_write
+   342 ;;                          _send_char
+   343 ;; ---------------------------------------------------------------------------------
+   344 ;; (1) _send_string                                          2     2      0     134
+   345 ;;                                              9 COMMON     2     2      0
+   346 ;;                          _send_char
+   347 ;; ---------------------------------------------------------------------------------
+   348 ;; (1) _lcd_goto                                             2     2      0     156
+   349 ;;                                              9 COMMON     2     2      0
+   350 ;;                        _send_config
+   351 ;; ---------------------------------------------------------------------------------
+   352 ;; (1) _lcd_clr                                              0     0      0     112
+   353 ;;                        _send_config
+   354 ;;                              _delay
+   355 ;; ---------------------------------------------------------------------------------
+   356 ;; (1) _send_char                                            1     1      0      67
+   357 ;;                                              8 COMMON     1     1      0
+   358 ;;                              _delay
+   359 ;; ---------------------------------------------------------------------------------
+   360 ;; (2) _send_config                                          1     1      0      67
+   361 ;;                                              8 COMMON     1     1      0
+   362 ;;                              _delay
+   363 ;; ---------------------------------------------------------------------------------
+   364 ;; (2) _delay                                                8     4      4      45
+   365 ;;                                              0 COMMON     8     4      4
+   366 ;; ---------------------------------------------------------------------------------
+   367 ;; (1) _internal_uart_write                                  1     1      0      22
+   368 ;;                                              0 COMMON     1     1      0
+   369 ;; ---------------------------------------------------------------------------------
+   370 ;; (1) _internal_uart_read                                   2     2      0      23
+   371 ;;                                              0 COMMON     2     2      0
+   372 ;; ---------------------------------------------------------------------------------
+   373 ;; Estimated maximum stack depth 2
+   374 ;; ---------------------------------------------------------------------------------
+   375                           
+   376 ;; Call Graph Graphs:
+   377                           
+   378 ;; _main (ROOT)
+   379 ;;   _send_config
+   380 ;;     _delay
+   381 ;;   _lcd_clr
+   382 ;;     _send_config
+   383 ;;       _delay
+   384 ;;     _delay
+   385 ;;   _lcd_goto
+   386 ;;     _send_config
+   387 ;;       _delay
+   388 ;;   _send_string
+   389 ;;     _send_char
+   390 ;;       _delay
+   391 ;;   _internal_uart_read
+   392 ;;   _internal_uart_write
+   393 ;;   _send_char
+   394 ;;     _delay
+   395 ;;
+   396                           
+   397 ;; Address spaces:
+   398                           
+   399 ;;Name               Size   Autos  Total    Cost      Usage
+   400 ;;BITCOMMON            E      0       0       0        0.0%
+   401 ;;EEDATA             100      0       0       0        0.0%
+   402 ;;NULL                 0      0       0       0        0.0%
+   403 ;;CODE                 0      0       0       0        0.0%
+   404 ;;COMMON               E      E       E       1      100.0%
+   405 ;;BITSFR0              0      0       0       1        0.0%
+   406 ;;SFR0                 0      0       0       1        0.0%
+   407 ;;BITSFR1              0      0       0       2        0.0%
+   408 ;;SFR1                 0      0       0       2        0.0%
+   409 ;;STACK                0      0       3       2        0.0%
+   410 ;;ABS                  0      0      13       3        0.0%
+   411 ;;BITBANK0            50      0       0       4        0.0%
+   412 ;;BITSFR3              0      0       0       4        0.0%
+   413 ;;SFR3                 0      0       0       4        0.0%
+   414 ;;BANK0               50      0       5       5        6.3%
+   415 ;;BITSFR2              0      0       0       5        0.0%
+   416 ;;SFR2                 0      0       0       5        0.0%
+   417 ;;BITBANK1            50      0       0       6        0.0%
+   418 ;;BANK1               50      0       0       7        0.0%
+   419 ;;BITBANK3            60      0       0       8        0.0%
+   420 ;;BANK3               60      0       0       9        0.0%
+   421 ;;BITBANK2            60      0       0      10        0.0%
+   422 ;;BANK2               60      0       0      11        0.0%
+   423 ;;DATA                 0      0      16      12        0.0%
+   424                           
+   425                           	global	_main
+   426                           psect	maintext,global,class=CODE,delta=2
+   427                           global __pmaintext
+   428  0655                     __pmaintext:
+   429                           
+   430 ;; *************** function _main *****************
+   431 ;; Defined at:
+   432 ;;		line 46 in file "C:\Users\Phang\Desktop\9.80\PR 27\Internal Slave\Slave_Internal UART.c"
+   433 ;; Parameters:    Size  Location     Type
+   434 ;;		None
+   435 ;; Auto vars:     Size  Location     Type
+   436 ;;  data_to_read    1   13[COMMON] unsigned char 
+   437 ;;  temp            1   12[COMMON] unsigned char 
+   438 ;; Return value:  Size  Location     Type
+   439 ;;		None               void
+   440 ;; Registers used:
+   441 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1, pclath, cstack
+   442 ;; Tracked objects:
+   443 ;;		On entry : 17F/0
+   444 ;;		On exit  : 0/0
+   445 ;;		Unchanged: 0/0
+   446 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   447 ;;      Params:         0       0       0       0       0
+   448 ;;      Locals:         2       0       0       0       0
+   449 ;;      Temps:          1       0       0       0       0
+   450 ;;      Totals:         3       0       0       0       0
+   451 ;;Total ram usage:        3 bytes
+   452 ;; Hardware stack levels required when called:    3
+   453 ;; This function calls:
+   454 ;;		_send_config
+   455 ;;		_lcd_clr
+   456 ;;		_lcd_goto
+   457 ;;		_send_string
+   458 ;;		_internal_uart_read
+   459 ;;		_internal_uart_write
+   460 ;;		_send_char
+   461 ;; This function is called by:
+   462 ;;		Startup code after reset
+   463 ;; This function uses a non-reentrant model
+   464 ;;
+   465                           psect	maintext
+   466                           	file	"C:\Users\Phang\Desktop\9.80\PR 27\Internal Slave\Slave_Internal UART.c"
+   467                           	line	46
+   468                           	global	__size_of_main
+   469  01AB                     	__size_of_main	equ	__end_of_main-_main
+   470                           	
+   471  0655                     _main:	
+   472                           	opt	stack 5
+   473                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
+   474                           	line	48
+   475                           	
+   476  0655                     l3438:	
+   477                           ;Slave_Internal UART.c: 48: unsigned char data_to_read=0;
+   478  0655  1003               	clrc
+   479  0656  3000               	movlw	0
+   480  0657  1803               	btfsc	status,0
+   481  0658  3001               	movlw	1
+   482  0659  00FD               	movwf	(main@data_to_read)
+   483                           	line	52
+   484                           	
+   485  065A                     l3440:	
+   486                           ;Slave_Internal UART.c: 49: unsigned char temp;
+   487                           ;Slave_Internal UART.c: 52: TRISB = 0b00000000;
+   488  065A  1683               	bsf	status, 5	;RP0=1, select bank1
+   489  065B  1303               	bcf	status, 6	;RP1=0, select bank1
+   490  065C  0186               	clrf	(134)^080h	;volatile
+   491                           	line	53
+   492                           	
+   493  065D                     l3442:	
+   494                           ;Slave_Internal UART.c: 53: TRISC = 0b00000000;
+   495  065D  0187               	clrf	(135)^080h	;volatile
+   496                           	line	54
+   497                           	
+   498  065E                     l3444:	
+   499                           ;Slave_Internal UART.c: 54: TRISA = 0b00011100;
+   500  065E  301C               	movlw	(01Ch)
+   501  065F  0085               	movwf	(133)^080h	;volatile
+   502                           	line	55
+   503                           	
+   504  0660                     l3446:	
+   505                           ;Slave_Internal UART.c: 55: ADCON1 = 0b00000110;
+   506  0660  3006               	movlw	(06h)
+   507  0661  009F               	movwf	(159)^080h	;volatile
+   508                           	line	58
+   509                           	
+   510  0662                     l3448:	
+   511                           ;Slave_Internal UART.c: 58: send_config(0b00000001);
+   512  0662  3001               	movlw	(01h)
+   513  0663  120A  118A  25B5   	fcall	_send_config
+              120A  118A         
+   514                           	line	59
+   515                           	
+   516  0668                     l3450:	
+   517                           ;Slave_Internal UART.c: 59: send_config(0b00000010);
+   518  0668  3002               	movlw	(02h)
+   519  0669  120A  118A  25B5   	fcall	_send_config
+              120A  118A         
+   520                           	line	60
+   521                           	
+   522  066E                     l3452:	
+   523                           ;Slave_Internal UART.c: 60: send_config(0b00000110);
+   524  066E  3006               	movlw	(06h)
+   525  066F  120A  118A  25B5   	fcall	_send_config
+              120A  118A         
+   526                           	line	61
+   527                           	
+   528  0674                     l3454:	
+   529                           ;Slave_Internal UART.c: 61: send_config(0b00001100);
+   530  0674  300C               	movlw	(0Ch)
+   531  0675  120A  118A  25B5   	fcall	_send_config
+              120A  118A         
+   532                           	line	62
+   533                           	
+   534  067A                     l3456:	
+   535                           ;Slave_Internal UART.c: 62: send_config(0b00111000);
+   536  067A  3038               	movlw	(038h)
+   537  067B  120A  118A  25B5   	fcall	_send_config
+              120A  118A         
+   538                           	line	65
+   539                           	
+   540  0680                     l3458:	
+   541                           ;Slave_Internal UART.c: 65: RA1=0;
+   542  0680  1283               	bcf	status, 5	;RP0=0, select bank0
+   543  0681  1303               	bcf	status, 6	;RP1=0, select bank0
+   544  0682  1085               	bcf	(41/8),(41)&7
+   545                           	line	66
+   546                           	
+   547  0683                     l3460:	
+   548                           ;Slave_Internal UART.c: 66: RA0=0;
+   549  0683  1005               	bcf	(40/8),(40)&7
+   550                           	line	67
+   551                           	
+   552  0684                     l3462:	
+   553                           ;Slave_Internal UART.c: 67: RA5=0;
+   554  0684  1285               	bcf	(45/8),(45)&7
+   555                           	line	68
+   556                           	
+   557  0685                     l3464:	
+   558                           ;Slave_Internal UART.c: 68: PORTB=0;
+   559  0685  0186               	clrf	(6)	;volatile
+   560                           	line	69
+   561                           	
+   562  0686                     l3466:	
+   563                           ;Slave_Internal UART.c: 69: lcd_clr();
+   564  0686  120A  118A  2584   	fcall	_lcd_clr
+              120A  118A         
+   565                           	line	70
+   566                           	
+   567  068B                     l3468:	
+   568                           ;Slave_Internal UART.c: 70: lcd_goto(0);
+   569  068B  3000               	movlw	(0)
+   570  068C  120A  118A  2598   	fcall	_lcd_goto
+              120A  118A         
+   571                           	line	71
+   572                           	
+   573  0691                     l3470:	
+   574                           ;Slave_Internal UART.c: 71: send_string("Cytron PR27");
+   575  0691  3010               	movlw	((STR_1-__stringbase))&0ffh
+   576  0692  120A  118A  25FF   	fcall	_send_string
+              120A  118A         
+   577                           	line	72
+   578                           	
+   579  0697                     l3472:	
+   580                           ;Slave_Internal UART.c: 72: lcd_goto(20);
+   581  0697  3014               	movlw	(014h)
+   582  0698  120A  118A  2598   	fcall	_lcd_goto
+              120A  118A         
+   583                           	line	73
+   584                           	
+   585  069D                     l3474:	
+   586                           ;Slave_Internal UART.c: 73: send_string("SLAVE Internal");
+   587  069D  3001               	movlw	((STR_2-__stringbase))&0ffh
+   588  069E  120A  118A  25FF   	fcall	_send_string
+              120A  118A         
+   589                           	line	76
+   590                           	
+   591  06A3                     l3476:	
+   592                           ;Slave_Internal UART.c: 76: TRISC6=0;
+   593  06A3  1683               	bsf	status, 5	;RP0=1, select bank1
+   594  06A4  1303               	bcf	status, 6	;RP1=0, select bank1
+   595  06A5  1307               	bcf	(1086/8)^080h,(1086)&7
+   596                           	line	77
+   597                           	
+   598  06A6                     l3478:	
+   599                           ;Slave_Internal UART.c: 77: TRISC7=1;
+   600  06A6  1787               	bsf	(1087/8)^080h,(1087)&7
+   601                           	line	78
+   602                           	
+   603  06A7                     l3480:	
+   604                           ;Slave_Internal UART.c: 78: SPBRG=129;
+   605  06A7  3081               	movlw	(081h)
+   606  06A8  0099               	movwf	(153)^080h	;volatile
+   607                           	line	79
+   608                           	
+   609  06A9                     l3482:	
+   610                           ;Slave_Internal UART.c: 79: BRGH=1;
+   611  06A9  1518               	bsf	(1218/8)^080h,(1218)&7
+   612                           	line	80
+   613                           	
+   614  06AA                     l3484:	
+   615                           ;Slave_Internal UART.c: 80: TXEN=1;
+   616  06AA  1698               	bsf	(1221/8)^080h,(1221)&7
+   617                           	line	81
+   618                           	
+   619  06AB                     l3486:	
+   620                           ;Slave_Internal UART.c: 81: TX9 =0;
+   621  06AB  1318               	bcf	(1222/8)^080h,(1222)&7
+   622                           	line	82
+   623                           	
+   624  06AC                     l3488:	
+   625                           ;Slave_Internal UART.c: 82: RX9 =0;
+   626  06AC  1283               	bcf	status, 5	;RP0=0, select bank0
+   627  06AD  1303               	bcf	status, 6	;RP1=0, select bank0
+   628  06AE  1318               	bcf	(198/8),(198)&7
+   629                           	line	83
+   630                           	
+   631  06AF                     l3490:	
+   632                           ;Slave_Internal UART.c: 83: CREN=1;
+   633  06AF  1618               	bsf	(196/8),(196)&7
+   634                           	line	84
+   635                           	
+   636  06B0                     l3492:	
+   637                           ;Slave_Internal UART.c: 84: SPEN=1;
+   638  06B0  1798               	bsf	(199/8),(199)&7
+   639                           	line	85
+   640                           	
+   641  06B1                     l3494:	
+   642                           ;Slave_Internal UART.c: 85: temp=RCREG;
+   643  06B1  081A               	movf	(26),w	;volatile
+   644  06B2  00FB               	movwf	(??_main+0)+0
+   645  06B3  087B               	movf	(??_main+0)+0,w
+   646  06B4  00FC               	movwf	(main@temp)
+   647                           	line	86
+   648                           	
+   649  06B5                     l3496:	
+   650                           ;Slave_Internal UART.c: 86: temp=RCREG;
+   651  06B5  081A               	movf	(26),w	;volatile
+   652  06B6  00FB               	movwf	(??_main+0)+0
+   653  06B7  087B               	movf	(??_main+0)+0,w
+   654  06B8  00FC               	movwf	(main@temp)
+   655  06B9  2EBA               	goto	l3498
+   656                           	line	99
+   657                           ;Slave_Internal UART.c: 99: while(1)
+   658                           	
+   659  06BA                     l513:	
+   660                           	line	101
+   661                           	
+   662  06BA                     l3498:	
+   663                           ;Slave_Internal UART.c: 100: {
+   664                           ;Slave_Internal UART.c: 101: data_to_read=internal_uart_read();
+   665  06BA  120A  118A  2575   	fcall	_internal_uart_read
+              120A  118A         
+   666  06BF  00FB               	movwf	(??_main+0)+0
+   667  06C0  087B               	movf	(??_main+0)+0,w
+   668  06C1  00FD               	movwf	(main@data_to_read)
+   669                           	line	103
+   670                           ;Slave_Internal UART.c: 103: switch(data_to_read)
+   671  06C2  2FE7               	goto	l3574
+   672                           	line	105
+   673                           ;Slave_Internal UART.c: 104: {
+   674                           ;Slave_Internal UART.c: 105: case 1:
+   675                           	
+   676  06C3                     l515:	
+   677                           	line	106
+   678                           	
+   679  06C3                     l3500:	
+   680                           ;Slave_Internal UART.c: 106: data_to_read=internal_uart_read();
+   681  06C3  120A  118A  2575   	fcall	_internal_uart_read
+              120A  118A         
+   682  06C8  00FB               	movwf	(??_main+0)+0
+   683  06C9  087B               	movf	(??_main+0)+0,w
+   684  06CA  00FD               	movwf	(main@data_to_read)
+   685                           	line	107
+   686                           	
+   687  06CB                     l3502:	
+   688                           ;Slave_Internal UART.c: 107: if(data_to_read==0)RA1=0;
+   689  06CB  08FD               	movf	(main@data_to_read),f
+   690  06CC  1D03               	skipz
+   691  06CD  2ECF               	goto	u3491
+   692  06CE  2ED0               	goto	u3490
+   693  06CF                     u3491:
+   694  06CF  2ED4               	goto	l516
+   695  06D0                     u3490:
+   696                           	
+   697  06D0                     l3504:	
+   698  06D0  1283               	bcf	status, 5	;RP0=0, select bank0
+   699  06D1  1303               	bcf	status, 6	;RP1=0, select bank0
+   700  06D2  1085               	bcf	(41/8),(41)&7
+   701  06D3  2ED8               	goto	l3506
+   702                           	line	108
+   703                           	
+   704  06D4                     l516:	
+   705                           ;Slave_Internal UART.c: 108: else RA1=1;
+   706  06D4  1283               	bcf	status, 5	;RP0=0, select bank0
+   707  06D5  1303               	bcf	status, 6	;RP1=0, select bank0
+   708  06D6  1485               	bsf	(41/8),(41)&7
+   709  06D7  2ED8               	goto	l3506
+   710                           	
+   711  06D8                     l517:	
+   712                           	line	109
+   713                           	
+   714  06D8                     l3506:	
+   715                           ;Slave_Internal UART.c: 109: internal_uart_write('a');
+   716  06D8  3061               	movlw	(061h)
+   717  06D9  120A  118A  2569   	fcall	_internal_uart_write
+              120A  118A         
+   718                           	line	110
+   719                           ;Slave_Internal UART.c: 110: break;
+   720  06DE  2EBA               	goto	l3498
+   721                           	line	112
+   722                           ;Slave_Internal UART.c: 112: case 2:
+   723                           	
+   724  06DF                     l519:	
+   725                           	line	113
+   726                           	
+   727  06DF                     l3508:	
+   728                           ;Slave_Internal UART.c: 113: data_to_read=internal_uart_read();
+   729  06DF  120A  118A  2575   	fcall	_internal_uart_read
+              120A  118A         
+   730  06E4  00FB               	movwf	(??_main+0)+0
+   731  06E5  087B               	movf	(??_main+0)+0,w
+   732  06E6  00FD               	movwf	(main@data_to_read)
+   733                           	line	114
+   734                           	
+   735  06E7                     l3510:	
+   736                           ;Slave_Internal UART.c: 114: if(data_to_read==0)RA0=0;
+   737  06E7  08FD               	movf	(main@data_to_read),f
+   738  06E8  1D03               	skipz
+   739  06E9  2EEB               	goto	u3501
+   740  06EA  2EEC               	goto	u3500
+   741  06EB                     u3501:
+   742  06EB  2EF0               	goto	l520
+   743  06EC                     u3500:
+   744                           	
+   745  06EC                     l3512:	
+   746  06EC  1283               	bcf	status, 5	;RP0=0, select bank0
+   747  06ED  1303               	bcf	status, 6	;RP1=0, select bank0
+   748  06EE  1005               	bcf	(40/8),(40)&7
+   749  06EF  2EF4               	goto	l3514
+   750                           	line	115
+   751                           	
+   752  06F0                     l520:	
+   753                           ;Slave_Internal UART.c: 115: else RA0=1;
+   754  06F0  1283               	bcf	status, 5	;RP0=0, select bank0
+   755  06F1  1303               	bcf	status, 6	;RP1=0, select bank0
+   756  06F2  1405               	bsf	(40/8),(40)&7
+   757  06F3  2EF4               	goto	l3514
+   758                           	
+   759  06F4                     l521:	
+   760                           	line	116
+   761                           	
+   762  06F4                     l3514:	
+   763                           ;Slave_Internal UART.c: 116: internal_uart_write('a');
+   764  06F4  3061               	movlw	(061h)
+   765  06F5  120A  118A  2569   	fcall	_internal_uart_write
+              120A  118A         
+   766                           	line	117
+   767                           ;Slave_Internal UART.c: 117: break;
+   768  06FA  2EBA               	goto	l3498
+   769                           	line	119
+   770                           ;Slave_Internal UART.c: 119: case 3:
+   771                           	
+   772  06FB                     l522:	
+   773                           	line	120
+   774                           	
+   775  06FB                     l3516:	
+   776                           ;Slave_Internal UART.c: 120: data_to_read=internal_uart_read();
+   777  06FB  120A  118A  2575   	fcall	_internal_uart_read
+              120A  118A         
+   778  0700  00FB               	movwf	(??_main+0)+0
+   779  0701  087B               	movf	(??_main+0)+0,w
+   780  0702  00FD               	movwf	(main@data_to_read)
+   781                           	line	121
+   782                           	
+   783  0703                     l3518:	
+   784                           ;Slave_Internal UART.c: 121: if(data_to_read==0)RA5=0;
+   785  0703  08FD               	movf	(main@data_to_read),f
+   786  0704  1D03               	skipz
+   787  0705  2F07               	goto	u3511
+   788  0706  2F08               	goto	u3510
+   789  0707                     u3511:
+   790  0707  2F0C               	goto	l523
+   791  0708                     u3510:
+   792                           	
+   793  0708                     l3520:	
+   794  0708  1283               	bcf	status, 5	;RP0=0, select bank0
+   795  0709  1303               	bcf	status, 6	;RP1=0, select bank0
+   796  070A  1285               	bcf	(45/8),(45)&7
+   797  070B  2F10               	goto	l3522
+   798                           	line	122
+   799                           	
+   800  070C                     l523:	
+   801                           ;Slave_Internal UART.c: 122: else RA5=1;
+   802  070C  1283               	bcf	status, 5	;RP0=0, select bank0
+   803  070D  1303               	bcf	status, 6	;RP1=0, select bank0
+   804  070E  1685               	bsf	(45/8),(45)&7
+   805  070F  2F10               	goto	l3522
+   806                           	
+   807  0710                     l524:	
+   808                           	line	123
+   809                           	
+   810  0710                     l3522:	
+   811                           ;Slave_Internal UART.c: 123: internal_uart_write('a');
+   812  0710  3061               	movlw	(061h)
+   813  0711  120A  118A  2569   	fcall	_internal_uart_write
+              120A  118A         
+   814                           	line	124
+   815                           ;Slave_Internal UART.c: 124: break;
+   816  0716  2EBA               	goto	l3498
+   817                           	line	126
+   818                           ;Slave_Internal UART.c: 126: case 4:
+   819                           	
+   820  0717                     l525:	
+   821                           	line	127
+   822                           	
+   823  0717                     l3524:	
+   824                           ;Slave_Internal UART.c: 127: data_to_read=internal_uart_read();
+   825  0717  120A  118A  2575   	fcall	_internal_uart_read
+              120A  118A         
+   826  071C  00FB               	movwf	(??_main+0)+0
+   827  071D  087B               	movf	(??_main+0)+0,w
+   828  071E  00FD               	movwf	(main@data_to_read)
+   829                           	line	128
+   830                           ;Slave_Internal UART.c: 128: switch(data_to_read)
+   831  071F  2F60               	goto	l3540
+   832                           	line	131
+   833                           ;Slave_Internal UART.c: 129: {
+   834                           ;Slave_Internal UART.c: 131: case 1:
+   835                           	
+   836  0720                     l527:	
+   837                           	line	132
+   838                           ;Slave_Internal UART.c: 132: if(RA2)internal_uart_write(1);
+   839  0720  1283               	bcf	status, 5	;RP0=0, select bank0
+   840  0721  1303               	bcf	status, 6	;RP1=0, select bank0
+   841  0722  1D05               	btfss	(42/8),(42)&7
+   842  0723  2F25               	goto	u3521
+   843  0724  2F26               	goto	u3520
+   844  0725                     u3521:
+   845  0725  2F2D               	goto	l3528
+   846  0726                     u3520:
+   847                           	
+   848  0726                     l3526:	
+   849  0726  3001               	movlw	(01h)
+   850  0727  120A  118A  2569   	fcall	_internal_uart_write
+              120A  118A         
+   851  072C  2EBA               	goto	l3498
+   852                           	line	133
+   853                           	
+   854  072D                     l528:	
+   855                           	
+   856  072D                     l3528:	
+   857                           ;Slave_Internal UART.c: 133: else internal_uart_write(0);
+   858  072D  3000               	movlw	(0)
+   859  072E  120A  118A  2569   	fcall	_internal_uart_write
+              120A  118A         
+   860  0733  2EBA               	goto	l3498
+   861                           	
+   862  0734                     l529:	
+   863                           	line	135
+   864                           ;Slave_Internal UART.c: 135: break;
+   865  0734  2EBA               	goto	l3498
+   866                           	line	137
+   867                           ;Slave_Internal UART.c: 137: case 2:
+   868                           	
+   869  0735                     l531:	
+   870                           	line	138
+   871                           ;Slave_Internal UART.c: 138: if(RA3)internal_uart_write(1);
+   872  0735  1283               	bcf	status, 5	;RP0=0, select bank0
+   873  0736  1303               	bcf	status, 6	;RP1=0, select bank0
+   874  0737  1D85               	btfss	(43/8),(43)&7
+   875  0738  2F3A               	goto	u3531
+   876  0739  2F3B               	goto	u3530
+   877  073A                     u3531:
+   878  073A  2F42               	goto	l3532
+   879  073B                     u3530:
+   880                           	
+   881  073B                     l3530:	
+   882  073B  3001               	movlw	(01h)
+   883  073C  120A  118A  2569   	fcall	_internal_uart_write
+              120A  118A         
+   884  0741  2EBA               	goto	l3498
+   885                           	line	139
+   886                           	
+   887  0742                     l532:	
+   888                           	
+   889  0742                     l3532:	
+   890                           ;Slave_Internal UART.c: 139: else internal_uart_write(0);
+   891  0742  3000               	movlw	(0)
+   892  0743  120A  118A  2569   	fcall	_internal_uart_write
+              120A  118A         
+   893  0748  2EBA               	goto	l3498
+   894                           	
+   895  0749                     l533:	
+   896                           	line	141
+   897                           ;Slave_Internal UART.c: 141: break;
+   898  0749  2EBA               	goto	l3498
+   899                           	line	143
+   900                           ;Slave_Internal UART.c: 143: case 3:
+   901                           	
+   902  074A                     l534:	
+   903                           	line	144
+   904                           ;Slave_Internal UART.c: 144: if(RA4)internal_uart_write(1);
+   905  074A  1283               	bcf	status, 5	;RP0=0, select bank0
+   906  074B  1303               	bcf	status, 6	;RP1=0, select bank0
+   907  074C  1E05               	btfss	(44/8),(44)&7
+   908  074D  2F4F               	goto	u3541
+   909  074E  2F50               	goto	u3540
+   910  074F                     u3541:
+   911  074F  2F57               	goto	l3536
+   912  0750                     u3540:
+   913                           	
+   914  0750                     l3534:	
+   915  0750  3001               	movlw	(01h)
+   916  0751  120A  118A  2569   	fcall	_internal_uart_write
+              120A  118A         
+   917  0756  2EBA               	goto	l3498
+   918                           	line	145
+   919                           	
+   920  0757                     l535:	
+   921                           	
+   922  0757                     l3536:	
+   923                           ;Slave_Internal UART.c: 145: else internal_uart_write(0);
+   924  0757  3000               	movlw	(0)
+   925  0758  120A  118A  2569   	fcall	_internal_uart_write
+              120A  118A         
+   926  075D  2EBA               	goto	l3498
+   927                           	
+   928  075E                     l536:	
+   929                           	line	147
+   930                           ;Slave_Internal UART.c: 147: break;
+   931  075E  2EBA               	goto	l3498
+   932                           	line	148
+   933                           	
+   934  075F                     l3538:	
+   935                           ;Slave_Internal UART.c: 148: }
+   936  075F  2EBA               	goto	l3498
+   937                           	line	128
+   938                           	
+   939  0760                     l526:	
+   940                           	
+   941  0760                     l3540:	
+   942  0760  087D               	movf	(main@data_to_read),w
+   943                           	; Switch size 1, requested type "space"
+   944                           ; Number of cases is 3, Range of values is 1 to 3
+   945                           ; switch strategies available:
+   946                           ; Name         Bytes Cycles
+   947                           ; simple_byte    10     6 (average)
+   948                           ; direct_byte    31    22 (fixed)
+   949                           ;	Chosen strategy is simple_byte
+   950                           
+   951  0761  3A01               	xorlw	1^0	; case 1
+   952  0762  1903               	skipnz
+   953  0763  2F20               	goto	l527
+   954  0764  3A03               	xorlw	2^1	; case 2
+   955  0765  1903               	skipnz
+   956  0766  2F35               	goto	l531
+   957  0767  3A01               	xorlw	3^2	; case 3
+   958  0768  1903               	skipnz
+   959  0769  2F4A               	goto	l534
+   960  076A  2EBA               	goto	l3498
+   961                           
+   962                           	line	148
+   963                           	
+   964  076B                     l530:	
+   965                           	line	149
+   966                           ;Slave_Internal UART.c: 149: break;
+   967  076B  2EBA               	goto	l3498
+   968                           	line	151
+   969                           ;Slave_Internal UART.c: 151: case 5:
+   970                           	
+   971  076C                     l537:	
+   972                           	line	152
+   973                           	
+   974  076C                     l3542:	
+   975                           ;Slave_Internal UART.c: 152: data_to_read=internal_uart_read();
+   976  076C  120A  118A  2575   	fcall	_internal_uart_read
+              120A  118A         
+   977  0771  00FB               	movwf	(??_main+0)+0
+   978  0772  087B               	movf	(??_main+0)+0,w
+   979  0773  00FD               	movwf	(main@data_to_read)
+   980                           	line	153
+   981                           	
+   982  0774                     l3544:	
+   983                           ;Slave_Internal UART.c: 153: lcd_clr();
+   984  0774  120A  118A  2584   	fcall	_lcd_clr
+              120A  118A         
+   985                           	line	154
+   986                           	
+   987  0779                     l3546:	
+   988                           ;Slave_Internal UART.c: 154: k=0;
+   989  0779  3000               	movlw	low(0)
+   990  077A  1283               	bcf	status, 5	;RP0=0, select bank0
+   991  077B  1303               	bcf	status, 6	;RP1=0, select bank0
+   992  077C  00A0               	movwf	(_k)
+   993  077D  3000               	movlw	high(0)
+   994  077E  00A1               	movwf	((_k))+1
+   995                           	line	155
+   996                           	
+   997  077F                     l3548:	
+   998                           ;Slave_Internal UART.c: 155: m=0;
+   999  077F  3000               	movlw	low(0)
+  1000  0780  00A2               	movwf	(_m)
+  1001  0781  3000               	movlw	high(0)
+  1002  0782  00A3               	movwf	((_m))+1
+  1003                           	line	156
+  1004                           	
+  1005  0783                     l3550:	
+  1006                           ;Slave_Internal UART.c: 156: internal_uart_write('a');
+  1007  0783  3061               	movlw	(061h)
+  1008  0784  120A  118A  2569   	fcall	_internal_uart_write
+              120A  118A         
+  1009                           	line	157
+  1010                           ;Slave_Internal UART.c: 157: break;
+  1011  0789  2EBA               	goto	l3498
+  1012                           	line	159
+  1013                           ;Slave_Internal UART.c: 159: case 6:
+  1014                           	
+  1015  078A                     l538:	
+  1016                           	line	160
+  1017                           	
+  1018  078A                     l3552:	
+  1019                           ;Slave_Internal UART.c: 160: data_to_read=internal_uart_read();
+  1020  078A  120A  118A  2575   	fcall	_internal_uart_read
+              120A  118A         
+  1021  078F  00FB               	movwf	(??_main+0)+0
+  1022  0790  087B               	movf	(??_main+0)+0,w
+  1023  0791  00FD               	movwf	(main@data_to_read)
+  1024                           	line	161
+  1025                           	
+  1026  0792                     l3554:	
+  1027                           ;Slave_Internal UART.c: 161: if (k>15)
+  1028  0792  1283               	bcf	status, 5	;RP0=0, select bank0
+  1029  0793  1303               	bcf	status, 6	;RP1=0, select bank0
+  1030  0794  0821               	movf	(_k+1),w
+  1031  0795  3A80               	xorlw	80h
+  1032  0796  00FF               	movwf	btemp+1
+  1033  0797  3080               	movlw	(high(010h))^80h
+  1034  0798  027F               	subwf	btemp+1,w
+  1035  0799  1D03               	skipz
+  1036  079A  2F9D               	goto	u3555
+  1037  079B  3010               	movlw	low(010h)
+  1038  079C  0220               	subwf	(_k),w
+  1039  079D                     u3555:
+  1040                           
+  1041  079D  1C03               	skipc
+  1042  079E  2FA0               	goto	u3551
+  1043  079F  2FA1               	goto	u3550
+  1044  07A0                     u3551:
+  1045  07A0  2FC3               	goto	l3564
+  1046  07A1                     u3550:
+  1047                           	line	163
+  1048                           	
+  1049  07A1                     l3556:	
+  1050                           ;Slave_Internal UART.c: 162: {
+  1051                           ;Slave_Internal UART.c: 163: send_config(0xc0+m);
+  1052  07A1  1283               	bcf	status, 5	;RP0=0, select bank0
+  1053  07A2  1303               	bcf	status, 6	;RP1=0, select bank0
+  1054  07A3  0822               	movf	(_m),w
+  1055  07A4  3EC0               	addlw	0C0h
+  1056  07A5  120A  118A  25B5   	fcall	_send_config
+              120A  118A         
+  1057                           	line	164
+  1058                           ;Slave_Internal UART.c: 164: send_char(data_to_read++);
+  1059  07AA  087D               	movf	(main@data_to_read),w
+  1060  07AB  120A  118A  25DA   	fcall	_send_char
+              120A  118A         
+  1061                           	
+  1062  07B0                     l3558:	
+  1063  07B0  3001               	movlw	(01h)
+  1064  07B1  00FB               	movwf	(??_main+0)+0
+  1065  07B2  087B               	movf	(??_main+0)+0,w
+  1066  07B3  07FD               	addwf	(main@data_to_read),f
+  1067                           	line	165
+  1068                           	
+  1069  07B4                     l3560:	
+  1070                           ;Slave_Internal UART.c: 165: m++;
+  1071  07B4  3001               	movlw	low(01h)
+  1072  07B5  1283               	bcf	status, 5	;RP0=0, select bank0
+  1073  07B6  1303               	bcf	status, 6	;RP1=0, select bank0
+  1074  07B7  07A2               	addwf	(_m),f
+  1075  07B8  1803               	skipnc
+  1076  07B9  0AA3               	incf	(_m+1),f
+  1077  07BA  3000               	movlw	high(01h)
+  1078  07BB  07A3               	addwf	(_m+1),f
+  1079                           	line	166
+  1080                           	
+  1081  07BC                     l3562:	
+  1082                           ;Slave_Internal UART.c: 166: k++;
+  1083  07BC  3001               	movlw	low(01h)
+  1084  07BD  07A0               	addwf	(_k),f
+  1085  07BE  1803               	skipnc
+  1086  07BF  0AA1               	incf	(_k+1),f
+  1087  07C0  3000               	movlw	high(01h)
+  1088  07C1  07A1               	addwf	(_k+1),f
+  1089                           	line	167
+  1090                           ;Slave_Internal UART.c: 167: }
+  1091  07C2  2FDF               	goto	l3570
+  1092                           	line	168
+  1093                           	
+  1094  07C3                     l539:	
+  1095                           	line	170
+  1096                           	
+  1097  07C3                     l3564:	
+  1098                           ;Slave_Internal UART.c: 168: else
+  1099                           ;Slave_Internal UART.c: 169: {
+  1100                           ;Slave_Internal UART.c: 170: send_config(0x80+k);
+  1101  07C3  1283               	bcf	status, 5	;RP0=0, select bank0
+  1102  07C4  1303               	bcf	status, 6	;RP1=0, select bank0
+  1103  07C5  0820               	movf	(_k),w
+  1104  07C6  3E80               	addlw	080h
+  1105  07C7  120A  118A  25B5   	fcall	_send_config
+              120A  118A         
+  1106                           	line	171
+  1107                           ;Slave_Internal UART.c: 171: send_char(data_to_read++);
+  1108  07CC  087D               	movf	(main@data_to_read),w
+  1109  07CD  120A  118A  25DA   	fcall	_send_char
+              120A  118A         
+  1110                           	
+  1111  07D2                     l3566:	
+  1112  07D2  3001               	movlw	(01h)
+  1113  07D3  00FB               	movwf	(??_main+0)+0
+  1114  07D4  087B               	movf	(??_main+0)+0,w
+  1115  07D5  07FD               	addwf	(main@data_to_read),f
+  1116                           	line	172
+  1117                           	
+  1118  07D6                     l3568:	
+  1119                           ;Slave_Internal UART.c: 172: k++;
+  1120  07D6  3001               	movlw	low(01h)
+  1121  07D7  1283               	bcf	status, 5	;RP0=0, select bank0
+  1122  07D8  1303               	bcf	status, 6	;RP1=0, select bank0
+  1123  07D9  07A0               	addwf	(_k),f
+  1124  07DA  1803               	skipnc
+  1125  07DB  0AA1               	incf	(_k+1),f
+  1126  07DC  3000               	movlw	high(01h)
+  1127  07DD  07A1               	addwf	(_k+1),f
+  1128  07DE  2FDF               	goto	l3570
+  1129                           	line	173
+  1130                           	
+  1131  07DF                     l540:	
+  1132                           	line	174
+  1133                           	
+  1134  07DF                     l3570:	
+  1135                           ;Slave_Internal UART.c: 173: }
+  1136                           ;Slave_Internal UART.c: 174: internal_uart_write('a');
+  1137  07DF  3061               	movlw	(061h)
+  1138  07E0  120A  118A  2569   	fcall	_internal_uart_write
+              120A  118A         
+  1139                           	line	175
+  1140                           ;Slave_Internal UART.c: 175: break;
+  1141  07E5  2EBA               	goto	l3498
+  1142                           	line	176
+  1143                           	
+  1144  07E6                     l3572:	
+  1145                           ;Slave_Internal UART.c: 176: }
+  1146  07E6  2EBA               	goto	l3498
+  1147                           	line	103
+  1148                           	
+  1149  07E7                     l514:	
+  1150                           	
+  1151  07E7                     l3574:	
+  1152  07E7  087D               	movf	(main@data_to_read),w
+  1153                           	; Switch size 1, requested type "space"
+  1154                           ; Number of cases is 6, Range of values is 1 to 6
+  1155                           ; switch strategies available:
+  1156                           ; Name         Bytes Cycles
+  1157                           ; simple_byte    19    10 (average)
+  1158                           ; direct_byte    40    22 (fixed)
+  1159                           ;	Chosen strategy is simple_byte
+  1160                           
+  1161  07E8  3A01               	xorlw	1^0	; case 1
+  1162  07E9  1903               	skipnz
+  1163  07EA  2EC3               	goto	l3500
+  1164  07EB  3A03               	xorlw	2^1	; case 2
+  1165  07EC  1903               	skipnz
+  1166  07ED  2EDF               	goto	l3508
+  1167  07EE  3A01               	xorlw	3^2	; case 3
+  1168  07EF  1903               	skipnz
+  1169  07F0  2EFB               	goto	l3516
+  1170  07F1  3A07               	xorlw	4^3	; case 4
+  1171  07F2  1903               	skipnz
+  1172  07F3  2F17               	goto	l3524
+  1173  07F4  3A01               	xorlw	5^4	; case 5
+  1174  07F5  1903               	skipnz
+  1175  07F6  2F6C               	goto	l3542
+  1176  07F7  3A03               	xorlw	6^5	; case 6
+  1177  07F8  1903               	skipnz
+  1178  07F9  2F8A               	goto	l3552
+  1179  07FA  2EBA               	goto	l3498
+  1180                           
+  1181                           	line	176
+  1182                           	
+  1183  07FB                     l518:	
+  1184  07FB  2EBA               	goto	l3498
+  1185                           	line	177
+  1186                           	
+  1187  07FC                     l541:	
+  1188                           	line	99
+  1189  07FC  2EBA               	goto	l3498
+  1190                           	
+  1191  07FD                     l542:	
+  1192                           	line	178
+  1193                           	
+  1194  07FD                     l543:	
+  1195                           	global	start
+  1196  07FD  120A  118A  2800   	ljmp	start
+  1197                           	opt stack 0
+  1198                           GLOBAL	__end_of_main
+  1199  0800                     	__end_of_main:
+  1200 ;; =============== function _main ends ============
+  1201                           
+  1202                           	signat	_main,88
+  1203                           	global	_send_string
+  1204                           psect	text217,local,class=CODE,delta=2
+  1205                           global __ptext217
+  1206  05FF                     __ptext217:
+  1207                           
+  1208 ;; *************** function _send_string *****************
+  1209 ;; Defined at:
+  1210 ;;		line 230 in file "C:\Users\Phang\Desktop\9.80\PR 27\Internal Slave\Slave_Internal UART.c"
+  1211 ;; Parameters:    Size  Location     Type
+  1212 ;;  s               1    wreg     PTR const unsigned char 
+  1213 ;;		 -> STR_2(15), STR_1(12), 
+  1214 ;; Auto vars:     Size  Location     Type
+  1215 ;;  s               1   10[COMMON] PTR const unsigned char 
+  1216 ;;		 -> STR_2(15), STR_1(12), 
+  1217 ;; Return value:  Size  Location     Type
+  1218 ;;		None               void
+  1219 ;; Registers used:
+  1220 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+  1221 ;; Tracked objects:
+  1222 ;;		On entry : 0/0
+  1223 ;;		On exit  : 0/0
+  1224 ;;		Unchanged: 0/0
+  1225 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1226 ;;      Params:         0       0       0       0       0
+  1227 ;;      Locals:         1       0       0       0       0
+  1228 ;;      Temps:          1       0       0       0       0
+  1229 ;;      Totals:         2       0       0       0       0
+  1230 ;;Total ram usage:        2 bytes
+  1231 ;; Hardware stack levels used:    1
+  1232 ;; Hardware stack levels required when called:    2
+  1233 ;; This function calls:
+  1234 ;;		_send_char
+  1235 ;; This function is called by:
+  1236 ;;		_main
+  1237 ;; This function uses a non-reentrant model
+  1238 ;;
+  1239                           psect	text217
+  1240                           	file	"C:\Users\Phang\Desktop\9.80\PR 27\Internal Slave\Slave_Internal UART.c"
+  1241                           	line	230
+  1242                           	global	__size_of_send_string
+  1243  0026                     	__size_of_send_string	equ	__end_of_send_string-_send_string
+  1244                           	
+  1245  05FF                     _send_string:	
+  1246                           	opt	stack 5
+  1247                           ; Regs used in _send_string: [wreg-fsr0h+status,2+status,0+pclath+cstack]
+  1248                           ;send_string@s stored from wreg
+  1249  05FF  00FA               	movwf	(send_string@s)
+  1250                           	line	231
+  1251                           	
+  1252  0600                     l3428:	
+  1253                           ;Slave_Internal UART.c: 231: while (s && *s)send_char (*s++);
+  1254  0600  2E12               	goto	l3434
+  1255                           	
+  1256  0601                     l573:	
+  1257                           	
+  1258  0601                     l3430:	
+  1259  0601  087A               	movf	(send_string@s),w
+  1260  0602  0084               	movwf	fsr0
+  1261  0603  120A  118A  2003   	fcall	stringdir
+              120A  118A         
+  1262  0608  120A  118A  25DA   	fcall	_send_char
+              120A  118A         
+  1263                           	
+  1264  060D                     l3432:	
+  1265  060D  3001               	movlw	(01h)
+  1266  060E  00F9               	movwf	(??_send_string+0)+0
+  1267  060F  0879               	movf	(??_send_string+0)+0,w
+  1268  0610  07FA               	addwf	(send_string@s),f
+  1269  0611  2E12               	goto	l3434
+  1270                           	
+  1271  0612                     l572:	
+  1272                           	
+  1273  0612                     l3434:	
+  1274  0612  087A               	movf	(send_string@s),w
+  1275  0613  1D03               	skipz
+  1276  0614  2E16               	goto	u3470
+  1277  0615  2E24               	goto	l577
+  1278  0616                     u3470:
+  1279                           	
+  1280  0616                     l3436:	
+  1281  0616  087A               	movf	(send_string@s),w
+  1282  0617  0084               	movwf	fsr0
+  1283  0618  120A  118A  2003   	fcall	stringdir
+              120A  118A         
+  1284  061D  3800               	iorlw	0
+  1285  061E  1D03               	skipz
+  1286  061F  2E21               	goto	u3481
+  1287  0620  2E22               	goto	u3480
+  1288  0621                     u3481:
+  1289  0621  2E01               	goto	l3430
+  1290  0622                     u3480:
+  1291  0622  2E24               	goto	l577
+  1292                           	
+  1293  0623                     l575:	
+  1294  0623  2E24               	goto	l577
+  1295                           	
+  1296  0624                     l576:	
+  1297                           	line	232
+  1298                           	
+  1299  0624                     l577:	
+  1300  0624  0008               	return
+  1301                           	opt stack 0
+  1302                           GLOBAL	__end_of_send_string
+  1303  0625                     	__end_of_send_string:
+  1304 ;; =============== function _send_string ends ============
+  1305                           
+  1306                           	signat	_send_string,4216
+  1307                           	global	_lcd_goto
+  1308                           psect	text218,local,class=CODE,delta=2
+  1309                           global __ptext218
+  1310  0598                     __ptext218:
+  1311                           
+  1312 ;; *************** function _lcd_goto *****************
+  1313 ;; Defined at:
+  1314 ;;		line 235 in file "C:\Users\Phang\Desktop\9.80\PR 27\Internal Slave\Slave_Internal UART.c"
+  1315 ;; Parameters:    Size  Location     Type
+  1316 ;;  data            1    wreg     unsigned char 
+  1317 ;; Auto vars:     Size  Location     Type
+  1318 ;;  data            1   10[COMMON] unsigned char 
+  1319 ;; Return value:  Size  Location     Type
+  1320 ;;		None               void
+  1321 ;; Registers used:
+  1322 ;;		wreg, status,2, status,0, pclath, cstack
+  1323 ;; Tracked objects:
+  1324 ;;		On entry : 0/0
+  1325 ;;		On exit  : 0/0
+  1326 ;;		Unchanged: 0/0
+  1327 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1328 ;;      Params:         0       0       0       0       0
+  1329 ;;      Locals:         1       0       0       0       0
+  1330 ;;      Temps:          1       0       0       0       0
+  1331 ;;      Totals:         2       0       0       0       0
+  1332 ;;Total ram usage:        2 bytes
+  1333 ;; Hardware stack levels used:    1
+  1334 ;; Hardware stack levels required when called:    2
+  1335 ;; This function calls:
+  1336 ;;		_send_config
+  1337 ;; This function is called by:
+  1338 ;;		_main
+  1339 ;; This function uses a non-reentrant model
+  1340 ;;
+  1341                           psect	text218
+  1342                           	file	"C:\Users\Phang\Desktop\9.80\PR 27\Internal Slave\Slave_Internal UART.c"
+  1343                           	line	235
+  1344                           	global	__size_of_lcd_goto
+  1345  001D                     	__size_of_lcd_goto	equ	__end_of_lcd_goto-_lcd_goto
+  1346                           	
+  1347  0598                     _lcd_goto:	
+  1348                           	opt	stack 5
+  1349                           ; Regs used in _lcd_goto: [wreg+status,2+status,0+pclath+cstack]
+  1350                           ;lcd_goto@data stored from wreg
+  1351  0598  00FA               	movwf	(lcd_goto@data)
+  1352                           	line	236
+  1353                           	
+  1354  0599                     l3420:	
+  1355                           ;Slave_Internal UART.c: 236: if(data<16)
+  1356  0599  3010               	movlw	(010h)
+  1357  059A  027A               	subwf	(lcd_goto@data),w
+  1358  059B  1803               	skipnc
+  1359  059C  2D9E               	goto	u3461
+  1360  059D  2D9F               	goto	u3460
+  1361  059E                     u3461:
+  1362  059E  2DA7               	goto	l3424
+  1363  059F                     u3460:
+  1364                           	line	238
+  1365                           	
+  1366  059F                     l3422:	
+  1367                           ;Slave_Internal UART.c: 237: {
+  1368                           ;Slave_Internal UART.c: 238: send_config(0x80+data);
+  1369  059F  087A               	movf	(lcd_goto@data),w
+  1370  05A0  3E80               	addlw	080h
+  1371  05A1  120A  118A  25B5   	fcall	_send_config
+              120A  118A         
+  1372                           	line	239
+  1373                           ;Slave_Internal UART.c: 239: }
+  1374  05A6  2DB4               	goto	l582
+  1375                           	line	240
+  1376                           	
+  1377  05A7                     l580:	
+  1378                           	line	242
+  1379                           	
+  1380  05A7                     l3424:	
+  1381                           ;Slave_Internal UART.c: 240: else
+  1382                           ;Slave_Internal UART.c: 241: {
+  1383                           ;Slave_Internal UART.c: 242: data=data-20;
+  1384  05A7  087A               	movf	(lcd_goto@data),w
+  1385  05A8  3EEC               	addlw	0ECh
+  1386  05A9  00F9               	movwf	(??_lcd_goto+0)+0
+  1387  05AA  0879               	movf	(??_lcd_goto+0)+0,w
+  1388  05AB  00FA               	movwf	(lcd_goto@data)
+  1389                           	line	243
+  1390                           	
+  1391  05AC                     l3426:	
+  1392                           ;Slave_Internal UART.c: 243: send_config(0xc0+data);
+  1393  05AC  087A               	movf	(lcd_goto@data),w
+  1394  05AD  3EC0               	addlw	0C0h
+  1395  05AE  120A  118A  25B5   	fcall	_send_config
+              120A  118A         
+  1396  05B3  2DB4               	goto	l582
+  1397                           	line	244
+  1398                           	
+  1399  05B4                     l581:	
+  1400                           	line	245
+  1401                           	
+  1402  05B4                     l582:	
+  1403  05B4  0008               	return
+  1404                           	opt stack 0
+  1405                           GLOBAL	__end_of_lcd_goto
+  1406  05B5                     	__end_of_lcd_goto:
+  1407 ;; =============== function _lcd_goto ends ============
+  1408                           
+  1409                           	signat	_lcd_goto,4216
+  1410                           	global	_lcd_clr
+  1411                           psect	text219,local,class=CODE,delta=2
+  1412                           global __ptext219
+  1413  0584                     __ptext219:
+  1414                           
+  1415 ;; *************** function _lcd_clr *****************
+  1416 ;; Defined at:
+  1417 ;;		line 210 in file "C:\Users\Phang\Desktop\9.80\PR 27\Internal Slave\Slave_Internal UART.c"
+  1418 ;; Parameters:    Size  Location     Type
+  1419 ;;		None
+  1420 ;; Auto vars:     Size  Location     Type
+  1421 ;;		None
+  1422 ;; Return value:  Size  Location     Type
+  1423 ;;		None               void
+  1424 ;; Registers used:
+  1425 ;;		wreg, status,2, status,0, pclath, cstack
+  1426 ;; Tracked objects:
+  1427 ;;		On entry : 0/0
+  1428 ;;		On exit  : 0/0
+  1429 ;;		Unchanged: 0/0
+  1430 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1431 ;;      Params:         0       0       0       0       0
+  1432 ;;      Locals:         0       0       0       0       0
+  1433 ;;      Temps:          0       0       0       0       0
+  1434 ;;      Totals:         0       0       0       0       0
+  1435 ;;Total ram usage:        0 bytes
+  1436 ;; Hardware stack levels used:    1
+  1437 ;; Hardware stack levels required when called:    2
+  1438 ;; This function calls:
+  1439 ;;		_send_config
+  1440 ;;		_delay
+  1441 ;; This function is called by:
+  1442 ;;		_main
+  1443 ;; This function uses a non-reentrant model
+  1444 ;;
+  1445                           psect	text219
+  1446                           	file	"C:\Users\Phang\Desktop\9.80\PR 27\Internal Slave\Slave_Internal UART.c"
+  1447                           	line	210
+  1448                           	global	__size_of_lcd_clr
+  1449  0014                     	__size_of_lcd_clr	equ	__end_of_lcd_clr-_lcd_clr
+  1450                           	
+  1451  0584                     _lcd_clr:	
+  1452                           	opt	stack 5
+  1453                           ; Regs used in _lcd_clr: [wreg+status,2+status,0+pclath+cstack]
+  1454                           	line	211
+  1455                           	
+  1456  0584                     l3418:	
+  1457                           ;Slave_Internal UART.c: 211: send_config(0x01);
+  1458  0584  3001               	movlw	(01h)
+  1459  0585  120A  118A  25B5   	fcall	_send_config
+              120A  118A         
+  1460                           	line	212
+  1461                           ;Slave_Internal UART.c: 212: delay(600);
+  1462  058A  3000               	movlw	0
+  1463  058B  00F3               	movwf	(?_delay+3)
+  1464  058C  3000               	movlw	0
+  1465  058D  00F2               	movwf	(?_delay+2)
+  1466  058E  3002               	movlw	02h
+  1467  058F  00F1               	movwf	(?_delay+1)
+  1468  0590  3058               	movlw	058h
+  1469  0591  00F0               	movwf	(?_delay)
+  1470                           
+  1471  0592  120A  118A  2625   	fcall	_delay
+              120A  118A         
+  1472                           	line	213
+  1473                           	
+  1474  0597                     l557:	
+  1475  0597  0008               	return
+  1476                           	opt stack 0
+  1477                           GLOBAL	__end_of_lcd_clr
+  1478  0598                     	__end_of_lcd_clr:
+  1479 ;; =============== function _lcd_clr ends ============
+  1480                           
+  1481                           	signat	_lcd_clr,88
+  1482                           	global	_send_char
+  1483                           psect	text220,local,class=CODE,delta=2
+  1484                           global __ptext220
+  1485  05DA                     __ptext220:
+  1486                           
+  1487 ;; *************** function _send_char *****************
+  1488 ;; Defined at:
+  1489 ;;		line 200 in file "C:\Users\Phang\Desktop\9.80\PR 27\Internal Slave\Slave_Internal UART.c"
+  1490 ;; Parameters:    Size  Location     Type
+  1491 ;;  data            1    wreg     unsigned char 
+  1492 ;; Auto vars:     Size  Location     Type
+  1493 ;;  data            1    8[COMMON] unsigned char 
+  1494 ;; Return value:  Size  Location     Type
+  1495 ;;		None               void
+  1496 ;; Registers used:
+  1497 ;;		wreg, status,2, status,0, pclath, cstack
+  1498 ;; Tracked objects:
+  1499 ;;		On entry : 0/0
+  1500 ;;		On exit  : 0/0
+  1501 ;;		Unchanged: 0/0
+  1502 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1503 ;;      Params:         0       0       0       0       0
+  1504 ;;      Locals:         1       0       0       0       0
+  1505 ;;      Temps:          0       0       0       0       0
+  1506 ;;      Totals:         1       0       0       0       0
+  1507 ;;Total ram usage:        1 bytes
+  1508 ;; Hardware stack levels used:    1
+  1509 ;; Hardware stack levels required when called:    1
+  1510 ;; This function calls:
+  1511 ;;		_delay
+  1512 ;; This function is called by:
+  1513 ;;		_main
+  1514 ;;		_send_string
+  1515 ;; This function uses a non-reentrant model
+  1516 ;;
+  1517                           psect	text220
+  1518                           	file	"C:\Users\Phang\Desktop\9.80\PR 27\Internal Slave\Slave_Internal UART.c"
+  1519                           	line	200
+  1520                           	global	__size_of_send_char
+  1521  0025                     	__size_of_send_char	equ	__end_of_send_char-_send_char
+  1522                           	
+  1523  05DA                     _send_char:	
+  1524                           	opt	stack 6
+  1525                           ; Regs used in _send_char: [wreg+status,2+status,0+pclath+cstack]
+  1526                           ;send_char@data stored from wreg
+  1527  05DA  00F8               	movwf	(send_char@data)
+  1528                           	line	201
+  1529                           	
+  1530  05DB                     l3406:	
+  1531                           ;Slave_Internal UART.c: 201: RC4=1;
+  1532  05DB  1283               	bcf	status, 5	;RP0=0, select bank0
+  1533  05DC  1303               	bcf	status, 6	;RP1=0, select bank0
+  1534  05DD  1607               	bsf	(60/8),(60)&7
+  1535                           	line	202
+  1536                           	
+  1537  05DE                     l3408:	
+  1538                           ;Slave_Internal UART.c: 202: PORTB=data;
+  1539  05DE  0878               	movf	(send_char@data),w
+  1540  05DF  0086               	movwf	(6)	;volatile
+  1541                           	line	203
+  1542                           	
+  1543  05E0                     l3410:	
+  1544                           ;Slave_Internal UART.c: 203: RC5=1;
+  1545  05E0  1687               	bsf	(61/8),(61)&7
+  1546                           	line	204
+  1547                           	
+  1548  05E1                     l3412:	
+  1549                           ;Slave_Internal UART.c: 204: delay(50);
+  1550  05E1  3000               	movlw	0
+  1551  05E2  00F3               	movwf	(?_delay+3)
+  1552  05E3  3000               	movlw	0
+  1553  05E4  00F2               	movwf	(?_delay+2)
+  1554  05E5  3000               	movlw	0
+  1555  05E6  00F1               	movwf	(?_delay+1)
+  1556  05E7  3032               	movlw	032h
+  1557  05E8  00F0               	movwf	(?_delay)
+  1558                           
+  1559  05E9  120A  118A  2625   	fcall	_delay
+              120A  118A         
+  1560                           	line	205
+  1561                           	
+  1562  05EE                     l3414:	
+  1563                           ;Slave_Internal UART.c: 205: RC5=0;
+  1564  05EE  1283               	bcf	status, 5	;RP0=0, select bank0
+  1565  05EF  1303               	bcf	status, 6	;RP1=0, select bank0
+  1566  05F0  1287               	bcf	(61/8),(61)&7
+  1567                           	line	206
+  1568                           	
+  1569  05F1                     l3416:	
+  1570                           ;Slave_Internal UART.c: 206: delay(50);
+  1571  05F1  3000               	movlw	0
+  1572  05F2  00F3               	movwf	(?_delay+3)
+  1573  05F3  3000               	movlw	0
+  1574  05F4  00F2               	movwf	(?_delay+2)
+  1575  05F5  3000               	movlw	0
+  1576  05F6  00F1               	movwf	(?_delay+1)
+  1577  05F7  3032               	movlw	032h
+  1578  05F8  00F0               	movwf	(?_delay)
+  1579                           
+  1580  05F9  120A  118A  2625   	fcall	_delay
+              120A  118A         
+  1581                           	line	207
+  1582                           	
+  1583  05FE                     l554:	
+  1584  05FE  0008               	return
+  1585                           	opt stack 0
+  1586                           GLOBAL	__end_of_send_char
+  1587  05FF                     	__end_of_send_char:
+  1588 ;; =============== function _send_char ends ============
+  1589                           
+  1590                           	signat	_send_char,4216
+  1591                           	global	_send_config
+  1592                           psect	text221,local,class=CODE,delta=2
+  1593                           global __ptext221
+  1594  05B5                     __ptext221:
+  1595                           
+  1596 ;; *************** function _send_config *****************
+  1597 ;; Defined at:
+  1598 ;;		line 189 in file "C:\Users\Phang\Desktop\9.80\PR 27\Internal Slave\Slave_Internal UART.c"
+  1599 ;; Parameters:    Size  Location     Type
+  1600 ;;  data            1    wreg     unsigned char 
+  1601 ;; Auto vars:     Size  Location     Type
+  1602 ;;  data            1    8[COMMON] unsigned char 
+  1603 ;; Return value:  Size  Location     Type
+  1604 ;;		None               void
+  1605 ;; Registers used:
+  1606 ;;		wreg, status,2, status,0, pclath, cstack
+  1607 ;; Tracked objects:
+  1608 ;;		On entry : 0/0
+  1609 ;;		On exit  : 0/0
+  1610 ;;		Unchanged: 0/0
+  1611 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1612 ;;      Params:         0       0       0       0       0
+  1613 ;;      Locals:         1       0       0       0       0
+  1614 ;;      Temps:          0       0       0       0       0
+  1615 ;;      Totals:         1       0       0       0       0
+  1616 ;;Total ram usage:        1 bytes
+  1617 ;; Hardware stack levels used:    1
+  1618 ;; Hardware stack levels required when called:    1
+  1619 ;; This function calls:
+  1620 ;;		_delay
+  1621 ;; This function is called by:
+  1622 ;;		_main
+  1623 ;;		_lcd_clr
+  1624 ;;		_lcd_goto
+  1625 ;; This function uses a non-reentrant model
+  1626 ;;
+  1627                           psect	text221
+  1628                           	file	"C:\Users\Phang\Desktop\9.80\PR 27\Internal Slave\Slave_Internal UART.c"
+  1629                           	line	189
+  1630                           	global	__size_of_send_config
+  1631  0025                     	__size_of_send_config	equ	__end_of_send_config-_send_config
+  1632                           	
+  1633  05B5                     _send_config:	
+  1634                           	opt	stack 5
+  1635                           ; Regs used in _send_config: [wreg+status,2+status,0+pclath+cstack]
+  1636                           ;send_config@data stored from wreg
+  1637  05B5  00F8               	movwf	(send_config@data)
+  1638                           	line	190
+  1639                           	
+  1640  05B6                     l3394:	
+  1641                           ;Slave_Internal UART.c: 190: RC4=0;
+  1642  05B6  1283               	bcf	status, 5	;RP0=0, select bank0
+  1643  05B7  1303               	bcf	status, 6	;RP1=0, select bank0
+  1644  05B8  1207               	bcf	(60/8),(60)&7
+  1645                           	line	191
+  1646                           	
+  1647  05B9                     l3396:	
+  1648                           ;Slave_Internal UART.c: 191: PORTB=data;
+  1649  05B9  0878               	movf	(send_config@data),w
+  1650  05BA  0086               	movwf	(6)	;volatile
+  1651                           	line	192
+  1652                           	
+  1653  05BB                     l3398:	
+  1654                           ;Slave_Internal UART.c: 192: RC5=1;
+  1655  05BB  1687               	bsf	(61/8),(61)&7
+  1656                           	line	193
+  1657                           	
+  1658  05BC                     l3400:	
+  1659                           ;Slave_Internal UART.c: 193: delay(50);
+  1660  05BC  3000               	movlw	0
+  1661  05BD  00F3               	movwf	(?_delay+3)
+  1662  05BE  3000               	movlw	0
+  1663  05BF  00F2               	movwf	(?_delay+2)
+  1664  05C0  3000               	movlw	0
+  1665  05C1  00F1               	movwf	(?_delay+1)
+  1666  05C2  3032               	movlw	032h
+  1667  05C3  00F0               	movwf	(?_delay)
+  1668                           
+  1669  05C4  120A  118A  2625   	fcall	_delay
+              120A  118A         
+  1670                           	line	194
+  1671                           	
+  1672  05C9                     l3402:	
+  1673                           ;Slave_Internal UART.c: 194: RC5=0;
+  1674  05C9  1283               	bcf	status, 5	;RP0=0, select bank0
+  1675  05CA  1303               	bcf	status, 6	;RP1=0, select bank0
+  1676  05CB  1287               	bcf	(61/8),(61)&7
+  1677                           	line	195
+  1678                           	
+  1679  05CC                     l3404:	
+  1680                           ;Slave_Internal UART.c: 195: delay(50);
+  1681  05CC  3000               	movlw	0
+  1682  05CD  00F3               	movwf	(?_delay+3)
+  1683  05CE  3000               	movlw	0
+  1684  05CF  00F2               	movwf	(?_delay+2)
+  1685  05D0  3000               	movlw	0
+  1686  05D1  00F1               	movwf	(?_delay+1)
+  1687  05D2  3032               	movlw	032h
+  1688  05D3  00F0               	movwf	(?_delay)
+  1689                           
+  1690  05D4  120A  118A  2625   	fcall	_delay
+              120A  118A         
+  1691                           	line	197
+  1692                           	
+  1693  05D9                     l551:	
+  1694  05D9  0008               	return
+  1695                           	opt stack 0
+  1696                           GLOBAL	__end_of_send_config
+  1697  05DA                     	__end_of_send_config:
+  1698 ;; =============== function _send_config ends ============
+  1699                           
+  1700                           	signat	_send_config,4216
+  1701                           	global	_delay
+  1702                           psect	text222,local,class=CODE,delta=2
+  1703                           global __ptext222
+  1704  0625                     __ptext222:
+  1705                           
+  1706 ;; *************** function _delay *****************
+  1707 ;; Defined at:
+  1708 ;;		line 184 in file "C:\Users\Phang\Desktop\9.80\PR 27\Internal Slave\Slave_Internal UART.c"
+  1709 ;; Parameters:    Size  Location     Type
+  1710 ;;  data            4    0[COMMON] unsigned long 
+  1711 ;; Auto vars:     Size  Location     Type
+  1712 ;;		None
+  1713 ;; Return value:  Size  Location     Type
+  1714 ;;		None               void
+  1715 ;; Registers used:
+  1716 ;;		wreg
+  1717 ;; Tracked objects:
+  1718 ;;		On entry : 0/0
+  1719 ;;		On exit  : 0/0
+  1720 ;;		Unchanged: 0/0
+  1721 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1722 ;;      Params:         4       0       0       0       0
+  1723 ;;      Locals:         0       0       0       0       0
+  1724 ;;      Temps:          4       0       0       0       0
+  1725 ;;      Totals:         8       0       0       0       0
+  1726 ;;Total ram usage:        8 bytes
+  1727 ;; Hardware stack levels used:    1
+  1728 ;; This function calls:
+  1729 ;;		Nothing
+  1730 ;; This function is called by:
+  1731 ;;		_send_config
+  1732 ;;		_send_char
+  1733 ;;		_lcd_clr
+  1734 ;; This function uses a non-reentrant model
+  1735 ;;
+  1736                           psect	text222
+  1737                           	file	"C:\Users\Phang\Desktop\9.80\PR 27\Internal Slave\Slave_Internal UART.c"
+  1738                           	line	184
+  1739                           	global	__size_of_delay
+  1740  0030                     	__size_of_delay	equ	__end_of_delay-_delay
+  1741                           	
+  1742  0625                     _delay:	
+  1743                           	opt	stack 6
+  1744                           ; Regs used in _delay: [wreg]
+  1745                           	line	185
+  1746                           	
+  1747  0625                     l2980:	
+  1748                           ;Slave_Internal UART.c: 185: for( ;data>0;data-=1);
+  1749  0625  0873               	movf	(delay@data+3),w
+  1750  0626  0472               	iorwf	(delay@data+2),w
+  1751  0627  0471               	iorwf	(delay@data+1),w
+  1752  0628  0470               	iorwf	(delay@data),w
+  1753  0629  1D03               	skipz
+  1754  062A  2E2C               	goto	u2871
+  1755  062B  2E2D               	goto	u2870
+  1756  062C                     u2871:
+  1757  062C  2E2F               	goto	l2984
+  1758  062D                     u2870:
+  1759  062D  2E54               	goto	l548
+  1760                           	
+  1761  062E                     l2982:	
+  1762  062E  2E54               	goto	l548
+  1763                           	
+  1764  062F                     l546:	
+  1765                           	
+  1766  062F                     l2984:	
+  1767  062F  3001               	movlw	01h
+  1768  0630  00F4               	movwf	((??_delay+0)+0)
+  1769  0631  3000               	movlw	0
+  1770  0632  00F5               	movwf	((??_delay+0)+0+1)
+  1771  0633  3000               	movlw	0
+  1772  0634  00F6               	movwf	((??_delay+0)+0+2)
+  1773  0635  3000               	movlw	0
+  1774  0636  00F7               	movwf	((??_delay+0)+0+3)
+  1775  0637  0874               	movf	0+(??_delay+0)+0,w
+  1776  0638  02F0               	subwf	(delay@data),f
+  1777  0639  0875               	movf	1+(??_delay+0)+0,w
+  1778  063A  1C03               	skipc
+  1779  063B  0F75               	incfsz	1+(??_delay+0)+0,w
+  1780  063C  2E3E               	goto	u2885
+  1781  063D  2E3F               	goto	u2886
+  1782  063E                     u2885:
+  1783  063E  02F1               	subwf	(delay@data+1),f
+  1784  063F                     u2886:
+  1785  063F  0876               	movf	2+(??_delay+0)+0,w
+  1786  0640  1C03               	skipc
+  1787  0641  0F76               	incfsz	2+(??_delay+0)+0,w
+  1788  0642  2E44               	goto	u2887
+  1789  0643  2E45               	goto	u2888
+  1790  0644                     u2887:
+  1791  0644  02F2               	subwf	(delay@data+2),f
+  1792  0645                     u2888:
+  1793  0645  0877               	movf	3+(??_delay+0)+0,w
+  1794  0646  1C03               	skipc
+  1795  0647  0F77               	incfsz	3+(??_delay+0)+0,w
+  1796  0648  2E4A               	goto	u2889
+  1797  0649  2E4B               	goto	u2880
+  1798  064A                     u2889:
+  1799  064A  02F3               	subwf	(delay@data+3),f
+  1800  064B                     u2880:
+  1801                           
+  1802  064B  0873               	movf	(delay@data+3),w
+  1803  064C  0472               	iorwf	(delay@data+2),w
+  1804  064D  0471               	iorwf	(delay@data+1),w
+  1805  064E  0470               	iorwf	(delay@data),w
+  1806  064F  1D03               	skipz
+  1807  0650  2E52               	goto	u2891
+  1808  0651  2E53               	goto	u2890
+  1809  0652                     u2891:
+  1810  0652  2E2F               	goto	l2984
+  1811  0653                     u2890:
+  1812  0653  2E54               	goto	l548
+  1813                           	
+  1814  0654                     l547:	
+  1815                           	line	186
+  1816                           	
+  1817  0654                     l548:	
+  1818  0654  0008               	return
+  1819                           	opt stack 0
+  1820                           GLOBAL	__end_of_delay
+  1821  0655                     	__end_of_delay:
+  1822 ;; =============== function _delay ends ============
+  1823                           
+  1824                           	signat	_delay,4216
+  1825                           	global	_internal_uart_write
+  1826                           psect	text223,local,class=CODE,delta=2
+  1827                           global __ptext223
+  1828  0569                     __ptext223:
+  1829                           
+  1830 ;; *************** function _internal_uart_write *****************
+  1831 ;; Defined at:
+  1832 ;;		line 216 in file "C:\Users\Phang\Desktop\9.80\PR 27\Internal Slave\Slave_Internal UART.c"
+  1833 ;; Parameters:    Size  Location     Type
+  1834 ;;  data            1    wreg     unsigned char 
+  1835 ;; Auto vars:     Size  Location     Type
+  1836 ;;  data            1    0[COMMON] unsigned char 
+  1837 ;; Return value:  Size  Location     Type
+  1838 ;;		None               void
+  1839 ;; Registers used:
+  1840 ;;		wreg
+  1841 ;; Tracked objects:
+  1842 ;;		On entry : 0/0
+  1843 ;;		On exit  : 0/0
+  1844 ;;		Unchanged: 0/0
+  1845 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1846 ;;      Params:         0       0       0       0       0
+  1847 ;;      Locals:         1       0       0       0       0
+  1848 ;;      Temps:          0       0       0       0       0
+  1849 ;;      Totals:         1       0       0       0       0
+  1850 ;;Total ram usage:        1 bytes
+  1851 ;; Hardware stack levels used:    1
+  1852 ;; This function calls:
+  1853 ;;		Nothing
+  1854 ;; This function is called by:
+  1855 ;;		_main
+  1856 ;; This function uses a non-reentrant model
+  1857 ;;
+  1858                           psect	text223
+  1859                           	file	"C:\Users\Phang\Desktop\9.80\PR 27\Internal Slave\Slave_Internal UART.c"
+  1860                           	line	216
+  1861                           	global	__size_of_internal_uart_write
+  1862  000C                     	__size_of_internal_uart_write	equ	__end_of_internal_uart_write-_internal_uart_write
+  1863                           	
+  1864  0569                     _internal_uart_write:	
+  1865                           	opt	stack 7
+  1866                           ; Regs used in _internal_uart_write: [wreg]
+  1867                           ;internal_uart_write@data stored from wreg
+  1868  0569  00F0               	movwf	(internal_uart_write@data)
+  1869                           	line	217
+  1870                           	
+  1871  056A                     l2976:	
+  1872                           ;Slave_Internal UART.c: 217: while(TXIF==0);
+  1873  056A  2D6B               	goto	l560
+  1874                           	
+  1875  056B                     l561:	
+  1876                           	
+  1877  056B                     l560:	
+  1878  056B  1283               	bcf	status, 5	;RP0=0, select bank0
+  1879  056C  1303               	bcf	status, 6	;RP1=0, select bank0
+  1880  056D  1E0C               	btfss	(100/8),(100)&7
+  1881  056E  2D70               	goto	u2861
+  1882  056F  2D71               	goto	u2860
+  1883  0570                     u2861:
+  1884  0570  2D6B               	goto	l560
+  1885  0571                     u2860:
+  1886  0571  2D72               	goto	l2978
+  1887                           	
+  1888  0572                     l562:	
+  1889                           	line	218
+  1890                           	
+  1891  0572                     l2978:	
+  1892                           ;Slave_Internal UART.c: 218: TXREG=data;
+  1893  0572  0870               	movf	(internal_uart_write@data),w
+  1894  0573  0099               	movwf	(25)	;volatile
+  1895                           	line	219
+  1896                           	
+  1897  0574                     l563:	
+  1898  0574  0008               	return
+  1899                           	opt stack 0
+  1900                           GLOBAL	__end_of_internal_uart_write
+  1901  0575                     	__end_of_internal_uart_write:
+  1902 ;; =============== function _internal_uart_write ends ============
+  1903                           
+  1904                           	signat	_internal_uart_write,4216
+  1905                           	global	_internal_uart_read
+  1906                           psect	text224,local,class=CODE,delta=2
+  1907                           global __ptext224
+  1908  0575                     __ptext224:
+  1909                           
+  1910 ;; *************** function _internal_uart_read *****************
+  1911 ;; Defined at:
+  1912 ;;		line 222 in file "C:\Users\Phang\Desktop\9.80\PR 27\Internal Slave\Slave_Internal UART.c"
+  1913 ;; Parameters:    Size  Location     Type
+  1914 ;;		None
+  1915 ;; Auto vars:     Size  Location     Type
+  1916 ;;  rec_data        1    1[COMMON] unsigned char 
+  1917 ;; Return value:  Size  Location     Type
+  1918 ;;                  1    wreg      unsigned char 
+  1919 ;; Registers used:
+  1920 ;;		wreg
+  1921 ;; Tracked objects:
+  1922 ;;		On entry : 0/0
+  1923 ;;		On exit  : 0/0
+  1924 ;;		Unchanged: 0/0
+  1925 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1926 ;;      Params:         0       0       0       0       0
+  1927 ;;      Locals:         1       0       0       0       0
+  1928 ;;      Temps:          1       0       0       0       0
+  1929 ;;      Totals:         2       0       0       0       0
+  1930 ;;Total ram usage:        2 bytes
+  1931 ;; Hardware stack levels used:    1
+  1932 ;; This function calls:
+  1933 ;;		Nothing
+  1934 ;; This function is called by:
+  1935 ;;		_main
+  1936 ;; This function uses a non-reentrant model
+  1937 ;;
+  1938                           psect	text224
+  1939                           	file	"C:\Users\Phang\Desktop\9.80\PR 27\Internal Slave\Slave_Internal UART.c"
+  1940                           	line	222
+  1941                           	global	__size_of_internal_uart_read
+  1942  000F                     	__size_of_internal_uart_read	equ	__end_of_internal_uart_read-_internal_uart_read
+  1943                           	
+  1944  0575                     _internal_uart_read:	
+  1945                           	opt	stack 7
+  1946                           ; Regs used in _internal_uart_read: [wreg]
+  1947                           	line	224
+  1948                           	
+  1949  0575                     l2970:	
+  1950                           ;Slave_Internal UART.c: 223: unsigned char rec_data;
+  1951                           ;Slave_Internal UART.c: 224: while(RCIF==0);
+  1952  0575  2D76               	goto	l566
+  1953                           	
+  1954  0576                     l567:	
+  1955                           	
+  1956  0576                     l566:	
+  1957  0576  1283               	bcf	status, 5	;RP0=0, select bank0
+  1958  0577  1303               	bcf	status, 6	;RP1=0, select bank0
+  1959  0578  1E8C               	btfss	(101/8),(101)&7
+  1960  0579  2D7B               	goto	u2851
+  1961  057A  2D7C               	goto	u2850
+  1962  057B                     u2851:
+  1963  057B  2D76               	goto	l566
+  1964  057C                     u2850:
+  1965  057C  2D7D               	goto	l2972
+  1966                           	
+  1967  057D                     l568:	
+  1968                           	line	225
+  1969                           	
+  1970  057D                     l2972:	
+  1971                           ;Slave_Internal UART.c: 225: rec_data = RCREG;
+  1972  057D  081A               	movf	(26),w	;volatile
+  1973  057E  00F0               	movwf	(??_internal_uart_read+0)+0
+  1974  057F  0870               	movf	(??_internal_uart_read+0)+0,w
+  1975  0580  00F1               	movwf	(internal_uart_read@rec_data)
+  1976                           	line	226
+  1977                           ;Slave_Internal UART.c: 226: return rec_data;
+  1978  0581  0871               	movf	(internal_uart_read@rec_data),w
+  1979  0582  2D83               	goto	l569
+  1980                           	
+  1981  0583                     l2974:	
+  1982                           	line	227
+  1983                           	
+  1984  0583                     l569:	
+  1985  0583  0008               	return
+  1986                           	opt stack 0
+  1987                           GLOBAL	__end_of_internal_uart_read
+  1988  0584                     	__end_of_internal_uart_read:
+  1989 ;; =============== function _internal_uart_read ends ============
+  1990                           
+  1991                           	signat	_internal_uart_read,89
+  1992                           psect	text225,local,class=CODE,delta=2
+  1993                           global __ptext225
+  1994  0000                     __ptext225:
+  1995                           	global	btemp
+  1996  007E                     	btemp set 07Eh
+  1997                           
+  1998                           	DABS	1,126,2	;btemp
+  1999                           	global	wtemp0
+  2000  007E                     	wtemp0 set btemp
+
+
+HI-TECH Software PICC Macro Assembler V9.80 build 6738 
+Symbol Table                                                                                   Wed Jun 20 23:23:32 2012
+
+                           _k 0020                             _m 0022                             pc 0002  
+                          fsr 0004                           l520 06F0                           l521 06F4  
+                         l513 06BA                           l514 07E7                           l530 076B  
+                         l522 06FB                           l531 0735                           l523 070C  
+                         l515 06C3                           l540 07DF                           l532 0742  
+                         l524 0710                           l516 06D4                           l541 07FC  
+                         l533 0749                           l525 0717                           l517 06D8  
+                         l542 07FD                           l518 07FB                           l526 0760  
+                         l534 074A                           l551 05D9                           l543 07FD  
+                         l535 0757                           l527 0720                           l519 06DF  
+                         l560 056B                           l536 075E                           l528 072D  
+                         l561 056B                           l537 076C                           l529 0734  
+                         l562 0572                           l546 062F                           l554 05FE  
+                         l538 078A                           l563 0574                           l547 0654  
+                         l539 07C3                           l548 0654                           l580 05A7  
+                         l572 0612                           l557 0597                           l581 05B4  
+                         l573 0601                           l566 0576                           l582 05B4  
+                         l567 0576                           l575 0623                           l568 057D  
+                         l576 0624                           l569 0583                           l577 0624  
+                         _RA0 0028                           _RA1 0029                           _RA2 002A  
+                         _RA3 002B                           _RC0 0038                           _RA4 002C  
+                         _RC1 0039                           _RA5 002D                           _RC2 003A  
+                         _RC3 003B                           _RC4 003C                           _RC5 003D  
+                         _RX9 00C6                           _TX9 04C6                           fsr0 0004  
+             send_config@data 0078                          l3400 05BC                          l3402 05C9  
+                        l3410 05E0                          l3404 05CC                          l3412 05E1  
+                        l3420 0599                          l3500 06C3                          l3414 05EE  
+                        l3406 05DB                          l3422 059F                          l3430 0601  
+                        l3510 06E7                          l3502 06CB                          l3416 05F1  
+                        l3408 05DE                          l3424 05A7                          l3432 060D  
+                        l3520 0708                          l3512 06EC                          l3504 06D0  
+                        l3440 065A                          l3418 0584                          l3426 05AC  
+                        l3434 0612                          l3530 073B                          l3522 0710  
+                        l3514 06F4                          l3506 06D8                          l3450 0668  
+                        l3442 065D                          l3436 0616                          l3428 0600  
+                        l3532 0742                          l3540 0760                          l3524 0717  
+                        l3516 06FB                          l3508 06DF                          l3460 0683  
+                        l3452 066E                          l3444 065E                          l3550 0783  
+                        l3542 076C                          l3534 0750                          l3526 0726  
+                        l3518 0703                          l3470 0691                          l3462 0684  
+                        l3454 0674                          l3446 0660                          l3438 0655  
+                        l3560 07B4                          l3552 078A                          l3544 0774  
+                        l3536 0757                          l3528 072D                          l3480 06A7  
+                        l3472 0697                          l3464 0685                          l3456 067A  
+                        l3448 0662                          l3394 05B6                          l3570 07DF  
+                        l3562 07BC                          l3554 0792                          l3546 0779  
+                        l3538 075F                          l3490 06AF                          l3482 06A9  
+                        l3474 069D                          l3466 0686                          l3458 0680  
+                        l3396 05B9                          l3572 07E6                          l3556 07A1  
+                        l3564 07C3                          l3548 077F                          l3492 06B0  
+                        l3484 06AA                          l3476 06A3                          l3468 068B  
+                        l3398 05BB                          l3566 07D2                          l3558 07B0  
+                        l3574 07E7                          l3494 06B1                          l3486 06AB  
+                        l3478 06A6                          l3568 07D6                          l3496 06B5  
+                        l3488 06AC                          l2970 0575                          l3498 06BA  
+                        l2972 057D                          l2980 0625                          l2974 0583  
+                        l2982 062E                          l2976 056A                          l2984 062F  
+                        l2978 0572                          STR_1 0018                          STR_2 0009  
+                        _BRGH 04C2                          _CREN 00C4                          u3500 06EC  
+                        u3501 06EB                          u3510 0708                          u3511 0707  
+                        u3520 0726                          u3521 0725                          u3530 073B  
+                        u3531 073A                          u3460 059F                          u3540 0750  
+                        u3461 059E                          u3541 074F                          u3470 0616  
+                        u3550 07A1                          u3551 07A0                          u3480 0622  
+                        u3481 0621                          u2850 057C                          u3490 06D0  
+                        u2851 057B                          u3555 079D                          u3491 06CF  
+                        u2860 0571                          u2861 0570                          u2870 062D  
+                        u2871 062C                          u2880 064B                          u2890 0653  
+                        u2891 0652                          _RCIF 0065                          u2885 063E  
+                        u2886 063F                          u2887 0644                          u2888 0645  
+                        u2889 064A                          _SPEN 00C7                          _TXEN 04C5  
+                        _TXIF 0064                          _main 0655                          btemp 007E  
+                lcd_goto@data 007A                          start 0000                         ?_main 0070  
+                       _RCREG 001A                         _SPBRG 0099                         _PORTB 0006  
+                       _TRISA 0085                         _TRISB 0086                         _TRISC 0087  
+                       _TXREG 0019               __end_of_lcd_clr 0598                         _delay 0625  
+                       pclath 000A                         status 0003                         wtemp0 007E  
+                __end_of_main 0800                        ??_main 007B              main@data_to_read 007D  
+                      ?_delay 0070                  ?_send_config 0070                        _ADCON1 009F  
+                ?_send_string 0070                        _TRISC0 0438                        _TRISC1 0439  
+                      _TRISC2 043A                        _TRISC3 043B                        _TRISC6 043E  
+                      _TRISC7 043F              __end_of_lcd_goto 05B5                     ??_lcd_clr 0079  
+              __pcstackCOMMON 0070                 __end_of_delay 0655            _internal_uart_read 0575  
+         ?_internal_uart_read 0070                       ??_delay 0074                    __pbssBANK0 0020  
+        ??_internal_uart_read 0070                    __pmaintext 0655  __size_of_internal_uart_write 000C  
+          __size_of_send_char 0025                     ?_lcd_goto 0070          __size_of_send_config 0025  
+  internal_uart_read@rec_data 0071          __size_of_send_string 0026                    _dummy_byte 0024  
+                     _lcd_clr 0584                    ??_lcd_goto 0079          end_of_initialization 0565  
+           __end_of_send_char 05FF                 send_char@data 0078           start_initialization 0560  
+         _internal_uart_write 0569          ?_internal_uart_write 0070             __size_of_lcd_goto 001D  
+ __size_of_internal_uart_read 000F         ??_internal_uart_write 0070                     __ptext220 05DA  
+                   __ptext221 05B5                     __ptext222 0625                     __ptext223 0569  
+                   __ptext224 0575                     __ptext216 0000                     __ptext225 0000  
+                   __ptext217 05FF                     __ptext218 0598                     __ptext219 0584  
+                   __pstrings 0003                      ?_lcd_clr 0070                 ??_send_config 0078  
+              __size_of_delay 0030                     delay@data 0070                 ??_send_string 0079  
+                   _send_char 05DA                   __stringbase 0008           __end_of_send_config 05DA  
+                  ?_send_char 0070                  send_string@s 007A           __end_of_send_string 0625  
+            __size_of_lcd_clr 0014       internal_uart_write@data 0070                      _lcd_goto 0598  
+               __size_of_main 01AB                      main@temp 007C                   _send_config 05B5  
+                 _send_string 05FF                   ??_send_char 0078                     stringcode 0003  
+                    stringdir 0003                      stringtab 0003   __end_of_internal_uart_write 0575  
+  __end_of_internal_uart_read 0584  

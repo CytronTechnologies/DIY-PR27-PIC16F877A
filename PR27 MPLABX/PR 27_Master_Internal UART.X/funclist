@@ -1,0 +1,13 @@
+_delay: CODE, 1428 0 48
+_main: CODE, 1635 0 413
+_onoff_slave_led1: CODE, 1476 0 53
+_onoff_slave_buzzer: CODE, 1582 0 53
+_onoff_slave_led2: CODE, 1529 0 53
+_lcd_clr: CODE, 1267 0 20
+_lcd_goto: CODE, 1287 0 29
+_send_string: CODE, 1390 0 38
+_internal_uart_write: CODE, 1240 0 12
+_send_config: CODE, 1316 0 37
+_internal_uart_read: CODE, 1252 0 15
+_send_char: CODE, 1353 0 37
+Total: 808

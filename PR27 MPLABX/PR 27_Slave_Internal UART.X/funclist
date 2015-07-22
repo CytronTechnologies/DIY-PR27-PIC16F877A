@@ -1,0 +1,10 @@
+_delay: CODE, 1581 0 48
+_main: CODE, 1629 0 419
+_lcd_clr: CODE, 1420 0 20
+_lcd_goto: CODE, 1440 0 29
+_send_string: CODE, 1543 0 38
+_internal_uart_write: CODE, 1393 0 12
+_send_config: CODE, 1506 0 37
+_internal_uart_read: CODE, 1405 0 15
+_send_char: CODE, 1469 0 37
+Total: 655
